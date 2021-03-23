@@ -6,14 +6,20 @@
     <!-- Add an item to the toolbar -->
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
+        <ToolbarItem x:Name="add"
+                     Text="{Binding tmp}"
                      Clicked="OnAddClicked" />
+        
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
+
+
+
+    
         <!-- Display notes in a list -->
         <CollectionView x:Name="collectionView"
                     Margin="20"
+                    
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemsLayout>
@@ -34,6 +40,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </ScrollView>
+    
 
 </ContentPage>

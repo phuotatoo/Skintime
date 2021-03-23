@@ -5,6 +5,7 @@ using Xamarin.Forms;
 namespace Skintime.Views
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
+    
     public partial class DiaryEntryPage : ContentPage
     {
         public string ItemId
@@ -22,6 +23,7 @@ namespace Skintime.Views
             // Set the BindingContext of the page to a new Note.
             BindingContext = new Diary();
         }
+        string Text;
 
         async void LoadNote(string itemId)
         {
@@ -31,10 +33,26 @@ namespace Skintime.Views
                 // Retrieve the note and set it as the BindingContext of the page.
                 Diary note = await App.Database.GetNoteAsync(id);
                 BindingContext = note;
+                if (note.nor)
+                {
+                    normal.BackgroundColor = Color.Black;
+                    normal.TextColor = Color.AntiqueWhite;
+                }
+                if (note.acn)
+                {
+                    acne.BackgroundColor = Color.Black;
+                    acne.TextColor = Color.AntiqueWhite;
+                }
+                if (note.ecz)
+                {
+                    eczema.BackgroundColor = Color.Black;
+                    eczema.TextColor = Color.AntiqueWhite;
+                }
+                //Text = note.Text;
             }
             catch (Exception)
             {
-                Console.WriteLine("Failed to load note.");
+                Console.WriteLine("Failed to load diary.");
             }
         }
 
@@ -42,6 +60,9 @@ namespace Skintime.Views
         {
             var note = (Diary)BindingContext;
             note.Date = DateTime.UtcNow;
+            if (normal.BackgroundColor == Color.Black) note.nor = true;
+            if (acne.BackgroundColor == Color.Black) note.acn = true;
+            if (eczema.BackgroundColor == Color.Black) note.ecz = true;
             //List
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
@@ -62,18 +83,42 @@ namespace Skintime.Views
         }
         async void OnNormalButtonClicked(object sender, EventArgs e)
         {
-            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
-            else (sender as Button).BackgroundColor = Color.Azure;
+            if ((sender as Button).BackgroundColor == Color.Khaki)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.AntiqueWhite;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
+            }
         }
         async void OnAcneButtonClicked(object sender, EventArgs e)
         {
-            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
-            else (sender as Button).BackgroundColor = Color.Azure;
+            if ((sender as Button).BackgroundColor == Color.Khaki)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.AntiqueWhite;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
+            }
         }
         async void OnEczemaButtonClicked(object sender, EventArgs e)
         {
-            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
-            else (sender as Button).BackgroundColor = Color.Azure;
+            if ((sender as Button).BackgroundColor == Color.Khaki)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.AntiqueWhite;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
+            }
         }
     }
 }

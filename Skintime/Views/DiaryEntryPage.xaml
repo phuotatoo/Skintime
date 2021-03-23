@@ -21,14 +21,17 @@
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="normal"
                         Text="Normal"
+                        BackgroundColor="Khaki"
                         TextColor="Black" 
                         Clicked="OnNormalButtonClicked"/>
                 <Button x:Name="acne"
                         Text="Acne"
+                        BackgroundColor="Khaki"
                         TextColor="Black"
                         Clicked="OnAcneButtonClicked"/>
                 <Button x:Name="eczema"
                         Text="Eczema"
+                        BackgroundColor="Khaki"
                         TextColor="Black" 
                         Clicked="OnEczemaButtonClicked"/>
 
@@ -41,7 +44,7 @@
         <!-- Ghi chu them ve tinh trang da-->
         <Editor Placeholder="Note"
                 PlaceholderColor="Gray"
-                Text="{Binding Text}"
+                Text="{Binding BindingContext}"
                 TextColor="Black"
                 HeightRequest="100" />
 

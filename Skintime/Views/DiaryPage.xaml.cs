@@ -2,6 +2,7 @@
 using System.Linq;
 using Skintime.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -11,6 +12,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
             ScrollView scrollView = new ScrollView { Content = collectionView };
+            //Content = scrollView;
         }
 
 
@@ -20,6 +22,9 @@ namespace Skintime.Views
 
             // Retrieve all the notes from the database, and set them as the
             // data source for the CollectionView.
+            List<Diary> t = new List<Diary>();
+            int tmp = t.Count;
+
             collectionView.ItemsSource = await App.Database.GetNotesAsync();
         }
         
