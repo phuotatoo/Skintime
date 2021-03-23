@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skintime.Views.DiaryEntryPage">
+
+    <!-- Layout children vertically -->
+    <StackLayout Margin="20">
+        <DatePicker TextColor="Black"
+            />
+        <TimePicker TextColor="Black"
+            />
+        <Label Text= "{Binding Date}"
+               TextColor="Black"
+            />
+
+
+        <Picker Title="Product"
+            />
+
+        <ScrollView HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Normal"
+                        TextColor="Black" />
+                <Button Text="Acne"
+                        TextColor="Black" />
+                <Button Text="Eczema"
+                        TextColor="Black" />
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+
+        <!-- Ghi chu them ve tinh trang da-->
+        <Editor Placeholder="Note"
+                PlaceholderColor="Gray"
+                Text="{Binding Text}"
+                TextColor="Black"
+                HeightRequest="100" />
+
+        <!-- Layout children in two columns -->
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Save" 
+                    Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1"
+                    Text="Delete" 
+                    Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
