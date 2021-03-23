@@ -12,45 +12,38 @@
         <Label Text= "{Binding Date}"
                TextColor="Black"
             />
-
-
         <Picker Title="Product"
             />
-
-        <ScrollView HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal">
                 <Button x:Name="normal"
                         Text="Normal"
-                        BackgroundColor="Khaki"
-                        TextColor="Black" 
+                        BackgroundColor="{Binding nColor}"
+                        TextColor="{Binding nText}"
                         Clicked="OnNormalButtonClicked"/>
                 <Button x:Name="acne"
                         Text="Acne"
-                        BackgroundColor="Khaki"
-                        TextColor="Black"
+                        BackgroundColor="{Binding aColor}"
+                        TextColor="{Binding aText}"
                         Clicked="OnAcneButtonClicked"/>
-                <Button x:Name="eczema"
+            <Button x:Name="eczema"
                         Text="Eczema"
-                        BackgroundColor="Khaki"
-                        TextColor="Black" 
+                        BackgroundColor="{Binding eColor}"
+                        TextColor="{Binding eText}"
                         Clicked="OnEczemaButtonClicked"/>
-
-
-            </StackLayout>
-
-        </ScrollView>
-
+        </StackLayout>
 
         <!-- Ghi chu them ve tinh trang da-->
-        <Editor Placeholder="Note"
+        <Editor x:Name="text"
+                Placeholder="Note"
                 PlaceholderColor="Gray"
-                Text="{Binding BindingContext}"
+                Text="{Binding Text}"
                 TextColor="Black"
                 HeightRequest="100" />
 
         <!-- Layout children in two columns -->
         <Grid ColumnDefinitions="*,*">
-            <Button Text="Save" 
+            <Button x:Name="add"
+                    Text="Save" 
                     Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1"
                     Text="Delete" 

@@ -5,20 +5,32 @@
              Title="Diary">
     <!-- Add an item to the toolbar -->
 
+    <ContentPage.Resources>
+    <!-- Define a visual state for the Selected state of the CollectionView -->
+    <Style TargetType="StackLayout">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                        Value="{StaticResource AppPrimaryColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="add"
-                     Text="{Binding tmp}"
+                     Text="Add"
                      Clicked="OnAddClicked" />
-        
     </ContentPage.ToolbarItems>
-
-
-
-
-    
-        <!-- Display notes in a list -->
+    <!-- Display notes in a list -->
         <CollectionView x:Name="collectionView"
-                    
                     Margin="{StaticResource PageMargin}"
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged">

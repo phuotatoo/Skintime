@@ -17,6 +17,7 @@ namespace Skintime
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(DiaryEntryPage), typeof(DiaryEntryPage));
+            //sao rui
         }
     }
 }

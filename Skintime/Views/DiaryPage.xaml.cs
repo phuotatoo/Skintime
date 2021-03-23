@@ -11,20 +11,14 @@ namespace Skintime.Views
         public DiaryPage()
         {
             InitializeComponent();
-            //ScrollView scrollView = new ScrollView { Content = collectionView };
-            //Content = scrollView;
         }
 
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
             // Retrieve all the notes from the database, and set them as the
-            // data source for the CollectionView.
-            List<Diary> t = new List<Diary>();
-            int tmp = t.Count;
-
+            // data source for the CollectionView.    
             collectionView.ItemsSource = await App.Database.GetNotesAsync();
         }
         

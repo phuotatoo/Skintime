@@ -1,6 +1,8 @@
 ﻿using System;
 using Skintime.Models;
 using Xamarin.Forms;
+//using System.Collections;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -31,38 +33,28 @@ namespace Skintime.Views
             {
                 int id = Convert.ToInt32(itemId);
                 // Retrieve the note and set it as the BindingContext of the page.
-                Diary note = await App.Database.GetNoteAsync(id);
+                Diary note = await App.Database.GetNoteAsync(id); // doi dzay thi phai doi tu trong cai database co, luoiiiii
                 BindingContext = note;
-                if (note.nor)
-                {
-                    normal.BackgroundColor = Color.Black;
-                    normal.TextColor = Color.AntiqueWhite;
-                }
-                if (note.acn)
-                {
-                    acne.BackgroundColor = Color.Black;
-                    acne.TextColor = Color.AntiqueWhite;
-                }
-                if (note.ecz)
-                {
-                    eczema.BackgroundColor = Color.Black;
-                    eczema.TextColor = Color.AntiqueWhite;
-                }
-                //Text = note.Text;
+                
             }
             catch (Exception)
             {
                 Console.WriteLine("Failed to load diary.");
             }
         }
-
+        int id;
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
+            //Set ID manually
+            List<Diary> t = new List<Diary>();
+            t = await App.Database.GetNotesAsync();
+            note.ID = t.Count;
             note.Date = DateTime.UtcNow;
-            if (normal.BackgroundColor == Color.Black) note.nor = true;
+            
+            /*if (normal.BackgroundColor == Color.Black) note.nor = true;
             if (acne.BackgroundColor == Color.Black) note.acn = true;
-            if (eczema.BackgroundColor == Color.Black) note.ecz = true;
+            if (eczema.BackgroundColor == Color.Black) note.ecz = true;*/
             //List
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
