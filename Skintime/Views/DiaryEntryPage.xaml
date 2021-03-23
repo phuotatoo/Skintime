@@ -19,12 +19,18 @@
 
         <ScrollView HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal">
-                <Button Text="Normal"
-                        TextColor="Black" />
-                <Button Text="Acne"
-                        TextColor="Black" />
-                <Button Text="Eczema"
-                        TextColor="Black" />
+                <Button x:Name="normal"
+                        Text="Normal"
+                        TextColor="Black" 
+                        Clicked="OnNormalButtonClicked"/>
+                <Button x:Name="acne"
+                        Text="Acne"
+                        TextColor="Black"
+                        Clicked="OnAcneButtonClicked"/>
+                <Button x:Name="eczema"
+                        Text="Eczema"
+                        TextColor="Black" 
+                        Clicked="OnEczemaButtonClicked"/>
 
 
             </StackLayout>

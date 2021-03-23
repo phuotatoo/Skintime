@@ -42,6 +42,7 @@ namespace Skintime.Views
         {
             var note = (Diary)BindingContext;
             note.Date = DateTime.UtcNow;
+            //List
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveNoteAsync(note);
@@ -58,6 +59,21 @@ namespace Skintime.Views
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
+        }
+        async void OnNormalButtonClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
+            else (sender as Button).BackgroundColor = Color.Azure;
+        }
+        async void OnAcneButtonClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
+            else (sender as Button).BackgroundColor = Color.Azure;
+        }
+        async void OnEczemaButtonClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button).BackgroundColor == Color.Azure) (sender as Button).BackgroundColor = Color.Blue;
+            else (sender as Button).BackgroundColor = Color.Azure;
         }
     }
 }
