@@ -18,8 +18,8 @@
     
         <!-- Display notes in a list -->
         <CollectionView x:Name="collectionView"
-                    Margin="20"
                     
+                    Margin="{StaticResource PageMargin}"
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemsLayout>

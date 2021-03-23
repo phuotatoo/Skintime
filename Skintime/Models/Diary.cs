@@ -7,7 +7,7 @@ namespace Skintime.Models
 {
     public class Diary
     {
-        [PrimaryKey,AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int ID { get; set; }
 
         public DateTime Date { get; set; }
@@ -16,6 +16,8 @@ namespace Skintime.Models
         public bool nor { get; set; }
         public bool acn { get; set; }
         public bool ecz { get; set; }
+
+
         public string Text { get; set; }
     }
 }
