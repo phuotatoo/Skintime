@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using SQLite;
+using SQLite.Net.Attributes;
 
 namespace Skintime.Models
 {
