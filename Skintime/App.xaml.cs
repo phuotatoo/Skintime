@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Skintime.Data;
+using System;
 using System.IO;
-using Skintime.Data;
 using Xamarin.Forms;
 
 namespace Skintime

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Skintime.Models;
 using SQLite;
-using Skintime.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Skintime.Data
 {
@@ -24,9 +24,7 @@ namespace Skintime.Data
         public Task<Diary> GetNoteAsync(int id)
         {
             // Get a specific note.
-            return database.Table<Diary>()
-                            .Where(i => i.ID == id)
-                            .FirstOrDefaultAsync();
+            return database.Table<Diary>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveNoteAsync(Diary note)

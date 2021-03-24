@@ -1,7 +1,6 @@
-﻿using System;
-using Skintime.Models;
+﻿using Skintime.Models;
+using System;
 using Xamarin.Forms;
-using System.Collections.Generic;
 
 namespace Skintime.Views
 {

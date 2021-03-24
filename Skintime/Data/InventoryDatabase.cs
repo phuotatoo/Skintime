@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Skintime.Models;
 using SQLite;
-using Skintime.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Skintime.Data
 {
