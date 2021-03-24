@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using SQLite;
 
 namespace Skintime.Models
 {
     public class Diary
     {
-        
+        [PrimaryKey, AutoIncrement,Indexed]
         public int ID { get; set; }
-
         public DateTime Date { get; set; }
-
-        // them 1 dong may cai bool cua may cai button nua 
-
         public string Text { get; set; }
     }
 }

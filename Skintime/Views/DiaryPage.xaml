@@ -10,7 +10,7 @@
                      Clicked="OnAddClicked" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
+
         <!-- Display notes in a list -->
         <CollectionView x:Name="collectionView"
                     Margin="20"
@@ -24,16 +24,19 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Label Text="{Binding Text}"
+                    <Label Text="{Binding ID}"
+                           TextColor="Black"
+                           />
+                    <Label Text="{Binding Text}"
                            TextColor="Black"
                            FontSize="Medium"/>
-                        <Label Text="{Binding Date}"
+                    <Label Text="{Binding Date}"
                            TextColor="Black"
                            FontSize="Small" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </ScrollView>
+
 
 </ContentPage>

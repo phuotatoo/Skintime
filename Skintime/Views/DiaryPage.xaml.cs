@@ -10,7 +10,7 @@ namespace Skintime.Views
         public DiaryPage()
         {
             InitializeComponent();
-            ScrollView scrollView = new ScrollView { Content = collectionView };
+            CollectionView collectionView = new CollectionView();
         }
 
 

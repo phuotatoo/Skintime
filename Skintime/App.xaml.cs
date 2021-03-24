@@ -8,7 +8,7 @@ namespace Skintime
     public partial class App : Application
     {
         static DiaryDatabase database;
-        static InventoryDatabase inventory;
+        //static InventoryDatabase inventory;
 
         // Create the database connection as a singleton.
         public static DiaryDatabase Database
@@ -22,7 +22,7 @@ namespace Skintime
                 return database;
             }
         }
-
+        /*
         public static InventoryDatabase Inventory
         {
             get
@@ -34,7 +34,7 @@ namespace Skintime
                 return inventory;
             }
         }
-
+        */
         public App()
         {
             InitializeComponent();

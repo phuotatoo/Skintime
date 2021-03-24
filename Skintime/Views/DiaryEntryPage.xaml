@@ -33,7 +33,8 @@
 
 
         <!-- Ghi chu them ve tinh trang da-->
-        <Editor Placeholder="Note"
+        <Editor x:Name="nt"
+                Placeholder="Note"
                 PlaceholderColor="Gray"
                 Text="{Binding Text}"
                 TextColor="Black"

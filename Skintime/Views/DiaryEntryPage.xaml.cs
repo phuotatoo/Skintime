@@ -1,6 +1,7 @@
 ﻿using System;
 using Skintime.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -19,7 +20,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
 
-            // Set the BindingContext of the page to a new Note.
+            // Set the BindingContext of the page to a new diary.
             BindingContext = new Diary();
         }
 
@@ -34,7 +35,7 @@ namespace Skintime.Views
             }
             catch (Exception)
             {
-                Console.WriteLine("Failed to load note.");
+                Console.WriteLine("Failed to load diary.");
             }
         }
 
@@ -42,6 +43,9 @@ namespace Skintime.Views
         {
             var note = (Diary)BindingContext;
             note.Date = DateTime.UtcNow;
+            /*List<Diary> t = new List<Diary>();
+            t = await App.Database.GetNotesAsync();
+            note.ID = t.Count;*/
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveNoteAsync(note);
