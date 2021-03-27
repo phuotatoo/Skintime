@@ -27,24 +27,24 @@ namespace Skintime.Data
             return database.Table<Diary>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveNoteAsync(Diary note)
+        public Task SaveNoteAsync(Diary note)
         {
             if (note.ID != 0)
             {
                 // Update an existing note.
-                return database.UpdateAsync(note);
+                await database.UpdateAsync(note);
             }
             else
             {
                 // Save a new note.
-                return database.InsertAsync(note);
+                await database.InsertAsync(note);
             }
         }
 
         public Task<int> DeleteNoteAsync(Diary note)
         {
             // Delete a note.
-            return database.DeleteAsync(note);
+            await database.DeleteAsync(note);
         }
     }
 
