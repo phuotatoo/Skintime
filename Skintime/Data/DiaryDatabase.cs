@@ -41,7 +41,7 @@ namespace Skintime.Data
             }
         }
 
-        public Task<int> DeleteNoteAsync(Diary note)
+        public Task DeleteNoteAsync(Diary note)
         {
             // Delete a note.
             await database.DeleteAsync(note);
