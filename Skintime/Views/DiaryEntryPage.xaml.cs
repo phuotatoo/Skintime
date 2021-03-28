@@ -20,7 +20,10 @@ namespace Skintime.Views
             InitializeComponent();
             // Set the BindingContext of the page to a new Diary.
             BindingContext = new Diary();
+            
         }
+
+        
 
         async void LoadDiary(string itemId)
         {
@@ -35,6 +38,56 @@ namespace Skintime.Views
             catch (Exception)
             {
                 Console.WriteLine("Failed to load diary.");
+            }
+        }
+
+        public void ChangeColor(object sender, bool state)
+        {
+            if (state)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.AntiqueWhite;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
+            }
+        }
+
+        async void OnNormalButtonClicked(object sender, EventArgs e)
+        {
+            var note = (Diary)BindingContext;
+            note.Normal = !note.Normal;
+            ChangeVisualState();
+        }
+        
+        async void OnAcneButtonClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button).BackgroundColor == Color.Khaki)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.Khaki;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
+            }
+        }
+
+
+        async void OnEczemaButtonClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button).BackgroundColor == Color.Khaki)
+            {
+                (sender as Button).BackgroundColor = Color.Black;
+                (sender as Button).TextColor = Color.AntiqueWhite;
+            }
+            else
+            {
+                (sender as Button).BackgroundColor = Color.Khaki;
+                (sender as Button).TextColor = Color.Black;
             }
         }
 

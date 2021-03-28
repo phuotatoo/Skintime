@@ -12,9 +12,40 @@
 
     <!-- Layout children vertically -->
     <StackLayout Margin="{StaticResource PageMargin}">
+        <DatePicker TextColor="Black"
+            />
+        <TimePicker TextColor="Black"
+            />
+        <Label Text= "{Binding Date}"
+               TextColor="Black"
+            />
+        <Picker Title="Product"
+            />
+
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="normal"
+                        Text="Normal"
+                        BackgroundColor="{Binding nColor}"
+                        TextColor="{Binding nText}"
+                        Clicked="OnNormalButtonClicked"/>
+            <Button x:Name="acne"
+                        Text="Acne"
+                        BackgroundColor="{Binding aColor}"
+                        TextColor="{Binding aText}"
+                        Clicked="OnAcneButtonClicked"/>
+            <Button x:Name="eczema"
+                        Text="Eczema"
+                        BackgroundColor="{Binding eColor}"
+                        TextColor="{Binding eText}"
+                        Clicked="OnEczemaButtonClicked"/>
+        </StackLayout>
+        
         <Editor Placeholder="Enter your note"
+                PlaceholderColor="Gray"
                 Text="{Binding Text}"
-                HeightRequest="100" />
+                TextColor="Black"
+                HeightRequest="70" />
+        
         <!-- Layout children in two columns -->
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save" 
