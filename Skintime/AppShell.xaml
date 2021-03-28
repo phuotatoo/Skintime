@@ -23,16 +23,16 @@
 
     <!-- Display a bottom tab bar containing two tabs -->
     <TabBar>
-        <ShellContent Title="Notes"
+        <ShellContent Title="Search"
                       
-                      ContentTemplate="{DataTemplate views:HomePage}" />
-        <ShellContent Title="Notes"
+                      ContentTemplate="{DataTemplate views:SearchPage}" />
+        <ShellContent Title="Diary"
                       
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
-        <ShellContent Title="Notes"
+        <ShellContent Title="My Cosmetic"
                       
                       ContentTemplate="{DataTemplate views:InventoryPage}" />
-        <ShellContent Title="About"
+        <ShellContent Title="Profile"
                       
                       ContentTemplate="{DataTemplate views:ProfilePage}" />
     </TabBar>

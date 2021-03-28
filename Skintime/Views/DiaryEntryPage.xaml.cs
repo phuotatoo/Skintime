@@ -23,7 +23,16 @@ namespace Skintime.Views
             
         }
 
-        
+        //id bên này ổn chứ hẻ
+        //on rui
+        // o oke
+        //mình cần xếp label với switch cho đúng vị trí mà nhỉ?
+        // tại swtich kh có properties text
+        //thui de button cung duoc?
+        //
+        //vào hú mess toii
+        //dang ban nhum okii nho hu'
+        //toi đi dạo nhúm
 
         async void LoadDiary(string itemId)
         {

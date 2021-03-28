@@ -11,12 +11,8 @@ namespace Skintime.Views
     {
         public HomePage()
         {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Welcome to Xamarin.Forms!" }
-                }
-            };
+            // này là chỗ có cái search bar
+            // nhma bấm vô cái search bar thì nó sẽ navigate qua 1 cái search page
         }
     }
 }

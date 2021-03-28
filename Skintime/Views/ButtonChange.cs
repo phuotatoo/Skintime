@@ -9,6 +9,6 @@ namespace Skintime.Views
 {
     public class ButtonChange
     {
-        
+        //cái in tên á hả? đợi toi tí
     }
 }
