@@ -23,17 +23,6 @@ namespace Skintime.Views
             
         }
 
-        //id bên này ổn chứ hẻ
-        //on rui
-        // o oke
-        //mình cần xếp label với switch cho đúng vị trí mà nhỉ?
-        // tại swtich kh có properties text
-        //thui de button cung duoc?
-        //
-        //vào hú mess toii
-        //dang ban nhum okii nho hu'
-        //toi đi dạo nhúm
-
         async void LoadDiary(string itemId)
         {
             try
@@ -41,8 +30,10 @@ namespace Skintime.Views
                 int id = Convert.ToInt32(itemId);
                 // Retrieve the note and set it as the BindingContext of the page.
                 Diary note = await App.Database.GetDiaryAsync(id);
-                
                 BindingContext = note;
+                ChangeColor(normal, note.Normal);
+                ChangeColor(acne, note.Acne);
+                ChangeColor(eczema, note.Eczema);
             }
             catch (Exception)
             {
@@ -63,47 +54,48 @@ namespace Skintime.Views
                 (sender as Button).TextColor = Color.Black;
             }
         }
-
+        DateTime chosendate = new DateTime();
+        TimeSpan chosentime = new TimeSpan();
+        async void Time_Changed(object sender, EventArgs e)
+        {
+            /*var diary = (Diary)BindingContext;
+            chosentime = diary.Time;*/
+        }
+        async void Date_Changed(object sender, EventArgs e)
+        {
+            /*var diary = (Diary)BindingContext;
+            chosendate = diary.Date;*/
+        }
         async void OnNormalButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
             note.Normal = !note.Normal;
-            ChangeVisualState();
+            ChangeColor(sender, note.Normal);
+            BindingContext = note;
         }
         
         async void OnAcneButtonClicked(object sender, EventArgs e)
         {
-            if ((sender as Button).BackgroundColor == Color.Khaki)
-            {
-                (sender as Button).BackgroundColor = Color.Black;
-                (sender as Button).TextColor = Color.Khaki;
-            }
-            else
-            {
-                (sender as Button).BackgroundColor = Color.Khaki;
-                (sender as Button).TextColor = Color.Black;
-            }
+            var note = (Diary)BindingContext;
+            note.Acne = !note.Acne;
+            ChangeColor(sender, note.Acne);
+            BindingContext = note;
         }
 
 
         async void OnEczemaButtonClicked(object sender, EventArgs e)
         {
-            if ((sender as Button).BackgroundColor == Color.Khaki)
-            {
-                (sender as Button).BackgroundColor = Color.Black;
-                (sender as Button).TextColor = Color.AntiqueWhite;
-            }
-            else
-            {
-                (sender as Button).BackgroundColor = Color.Khaki;
-                (sender as Button).TextColor = Color.Black;
-            }
+            var note = (Diary)BindingContext;
+            note.Eczema = !note.Eczema;
+            ChangeColor(sender, note.Eczema);
+            BindingContext = note;
         }
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
-            note.Date = DateTime.UtcNow;
+            note.Date = date.Date;
+            note.Time = time.Time;
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
@@ -116,9 +108,7 @@ namespace Skintime.Views
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
-
             await App.Database.DeleteDiaryAsync(note);
-
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
         }

@@ -13,12 +13,16 @@
     <!-- Layout children vertically -->
     <StackLayout Margin="{StaticResource PageMargin}">
         <DatePicker TextColor="Black"
+                    x:Name="date"
+                    Date="{Binding Date}"
+                    PropertyChanged="Date_Changed"
             />
         <TimePicker TextColor="Black"
+                    x:Name="time"
+                    Time="{Binding Time}"
+                    PropertyChanged="Time_Changed"
             />
-        <Label Text= "{Binding Date}"
-               TextColor="Black"
-            />
+        
         <Picker Title="Product"
             />
 

@@ -8,9 +8,10 @@
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
         </Frame>
-        
-        
-
+        <Label 
+            x:Name="check"
+            FontSize="Medium"
+            TextColor="Black"/>
         <SearchBar
                x:Name ="Search"
                Placeholder="Search for product"
@@ -21,9 +22,28 @@
                VerticalTextAlignment="Center"
                FontSize="Medium"
                TextChanged="Search_TextChange" />
+        
         <CollectionView
                 x:Name="Coll"
-                ItemsLayout="VerticalGrid">
+                SelectionMode="Single"
+                SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding name}"
+                           TextColor="Black"
+                           FontSize="Medium" />
+                        <Label Text="{Binding brand}"
+                           TextColor="Black"
+                           FontSize="Small" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
 
     </StackLayout>
