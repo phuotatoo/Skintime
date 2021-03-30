@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skintime.Views.DiaryPage">
+             x:Class="Skintime.Views.DiaryPage"
+             BackgroundColor="#f3f4f6">
+    
     <ContentPage.Resources>
         <!-- Define a visual state for the Selected state of the CollectionView -->
         <Style TargetType="StackLayout">
@@ -20,6 +22,7 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
+    
 
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
@@ -27,26 +30,63 @@
                      Clicked="OnAddClicked" />
     </ContentPage.ToolbarItems>
 
-    <!-- Display notes in a list -->
-    <CollectionView x:Name="collectionView"
-                    Margin="{StaticResource PageMargin}"
+    <CollectionView x:Name ="collectionView"                        
+                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                    VerticalScrollBarVisibility="Never"
+                    VerticalOptions="Start"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical"
-                               ItemSpacing="10" />
-        </CollectionView.ItemsLayout>
-        <!-- Define the appearance of each item in the list -->
+                    SelectionChanged="OnSelectionChanged"
+                    Margin="{StaticResource PageMargin}" >
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <StackLayout>
-                    <Label Text="{Binding Text}"
-                           TextColor="Black"
-                           FontSize="Medium" />
+                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
+
+                    <!--Schedule timeline-->
+                    <BoxView Grid.Row="2" 
+                             Grid.Column="0"
+                             VerticalOptions="Start" 
+                                 WidthRequest="4" 
+                                 Color="#bfc0c0" 
+                                 HeightRequest="70" 
+                                 Margin="25,-50,25,10"/>
+
+                    <!-- Date description-->
                     <Label Text="{Binding Date}"
-                           TextColor="{StaticResource TertiaryColor}"
-                           FontSize="Small" />
-                </StackLayout>
+                           TextColor="#535257" 
+                           FontAttributes="Bold"                                
+                           Padding="10,0,0,0"/>
+
+                    <!-- Schedule time-->
+                    <Label Grid.Row="1" 
+                               Grid.Column="0" 
+                               Text="{Binding Time}"  
+                               TextColor="#bfc0c0" 
+                               FontAttributes="Bold" 
+                               VerticalOptions="Start"/>
+                    <!-- Vertical Line-->
+                    <BoxView Grid.Row="2" 
+                             Grid.Column="1" 
+                             WidthRequest="0" 
+                             Color="Silver" 
+                             HeightRequest="120" 
+                                 />
+                    <!-- Card -->
+                    <Frame Grid.Row="1" 
+                               Grid.RowSpan="2" 
+                               Grid.Column="1" 
+                               CornerRadius="25" 
+                               HasShadow="False" 
+                               >
+                        <StackLayout>
+                            <Label Text="{Binding Text}" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#535257" 
+                                       FontSize="18"/>
+
+                            <!-- Skin condition below-->
+                        </StackLayout>
+                    </Frame>
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

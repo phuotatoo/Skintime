@@ -9,6 +9,17 @@ namespace Skintime.Views
 {
     [QueryProperty(nameof(product), nameof(product))]
 
+    //[Xamarin.Forms.RenderWith(typeof(Xamarin.Forms.Platform._NavigationPageRenderer))]
+    //dang bi choang, nen la, toi se di nam 1 nhum
+    // oklee di nghi di
+    // ngoi day la pan' do'
+    //j
+    //hong
+    // sao lai hong
+    //thich the day
+    // o kiaaa =(())
+    //hui di day
+    //okee dung luot discord
     public partial class ProductDetailPage : ContentPage
     {
         public Cosmetics product
@@ -21,6 +32,7 @@ namespace Skintime.Views
                 {
                     try
                     {
+
                         BindingContext = product;
                     }
                     catch (Exception)
@@ -30,7 +42,8 @@ namespace Skintime.Views
                 }
             }
         }
-
+        // heee toi di an dayyy
+        // tat teamview nha
         public ProductDetailPage()
         {
             InitializeComponent();

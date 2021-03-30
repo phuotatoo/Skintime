@@ -22,7 +22,7 @@ namespace Skintime.Views
         List<String> MyList = new List<string>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
         ItemSearchHandlerClass searchhandler = new ItemSearchHandlerClass();
-        //hmm đợi toi 
+        
         private async void Search_TextChange(object sender, TextChangedEventArgs e)
         {
             var SearchResult = mycosmetics.Where(c =>
@@ -35,14 +35,16 @@ namespace Skintime.Views
             Coll.ItemsSource = a;
             check.Text = a.Count().ToString();
         }
+        
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
             {
                 Cosmetics cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
-                
+                string tmp = cosmetics.id;
                 await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={cosmetics}");
             }
+            
         }
         
     }

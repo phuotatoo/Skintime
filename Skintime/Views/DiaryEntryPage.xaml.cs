@@ -54,10 +54,7 @@ namespace Skintime.Views
                 (sender as Button).TextColor = Color.Black;
             }
         }
-        /*
-        DateTime chosendate = new DateTime();
-        TimeSpan chosentime = new TimeSpan();
-        */
+        
         async void Time_Changed(object sender, EventArgs e)
         {
             /*var diary = (Diary)BindingContext;
