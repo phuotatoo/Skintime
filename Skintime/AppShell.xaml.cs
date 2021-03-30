@@ -12,6 +12,7 @@ namespace Skintime
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(DiaryEntryPage), typeof(DiaryEntryPage));
+            Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
         }
     }
 }

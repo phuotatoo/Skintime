@@ -1,55 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using SQLite;
 using Skintime.Models;
 
 namespace Skintime.Views
 {
-    [QueryProperty(nameof(productid), nameof(productid))]
+    [QueryProperty(nameof(product), nameof(product))]
 
     public partial class ProductDetailPage : ContentPage
     {
-        public string productid
+        public Cosmetics product
         {
             set
             {
                 LoadProduct(value);
 
-                async void LoadProduct(string productid)
+                async void LoadProduct(Cosmetics product)
                 {
-                    Cosmetics res = new Cosmetics();
-                    ItemSearchHandlerClass search = new ItemSearchHandlerClass();
-                    List<Cosmetics> data = search.LayData();
                     try
                     {
-                        res = data.Where(c =>
-                        {
-                            string finding = productid;
-                            return c.id.Contains(finding);
-                        }).FirstOrDefault();
-                        BindingContext = res;
-                        //oke we khá gud now
+                        BindingContext = product;
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("pleee");
+                        Console.WriteLine("Failed to load product");
                     }
-                    //còn đó humm
-                    // bạn có định sang làm nốt cái 
-                    //button? u got me
-                    //doi xiu okee
                 }
             }
         }
+
         public ProductDetailPage()
         {
             InitializeComponent();
+            BindingContext = new Cosmetics();
         }
     }
 }

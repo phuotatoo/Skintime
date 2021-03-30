@@ -4,9 +4,15 @@
              x:Class="Skintime.Views.ProductDetailPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding brand}"
+                   TextColor="Black"
+                 />
+            <Label Text="{Binding name}"
+                   TextColor="Black"
+                />
+            <Label Text="{Binding ingredient_list}" 
+                   TextColor="Black"
+                />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -47,7 +47,6 @@ namespace Skintime.Models
             {
                 MyList.Add(SearchAns[i].name);
             }
-
         }
 
         protected override async void OnItemSelected(object item)
@@ -57,18 +56,8 @@ namespace Skintime.Models
             await Task.Delay(1000);
             ShellNavigationState state = (App.Current.MainPage as Shell).CurrentState;
             // The following route works because route names are unique in this application.
-            await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.productid)}={((Cosmetics)item).id}");
-            //cái này còn tuỳ là bạn muốn đẩy cái nào qua để tìm
-            // kiểu cái này nè
-            // nó là dữ liệu để truyền qua cho cái DetailPage á
-            // mình muốn tìm cosmetics bằng properties nào thì đẩy cái đó qua
-            // hê chắc là bạn sẽ hiểu=))
-            //cái này trước hiểu ròi :)) oke we gud
-            // trưa này 3h của toi cũng có ích
-            // hê
-            // recommend tìm bằng name
-            //sao không phải id?
-            // id phải ToString, với lại sang bên detailpage phải đổi lại thành số=)) lừi
+            await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={((Cosmetics)item)}");
+            
         }
 
         /*string GetNavigationTarget()

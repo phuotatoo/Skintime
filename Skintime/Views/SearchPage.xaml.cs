@@ -39,9 +39,9 @@ namespace Skintime.Views
         {
             if (e.CurrentSelection != null)
             {
-                // Navigate to the NoteEntryPage, passing the ID as a query parameter.
                 Cosmetics cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
-                await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.productid)}={cosmetics.id}");
+                
+                await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={cosmetics}");
             }
         }
         
