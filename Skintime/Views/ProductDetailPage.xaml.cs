@@ -7,14 +7,17 @@ using Skintime.Models;
 
 namespace Skintime.Views
 {
-    [QueryProperty(nameof(product), nameof(product))]
+    //[QueryProperty(nameof(product), nameof(product))]
 
     //[Xamarin.Forms.RenderWith(typeof(Xamarin.Forms.Platform._NavigationPageRenderer))]
     
     public partial class ProductDetailPage : ContentPage
     {
+
+        /*
         public Cosmetics product
         {
+            
             set
             {
                 LoadProduct(value);
@@ -32,12 +35,17 @@ namespace Skintime.Views
                     }
                 }
             }
-        }
+        }*/
         
         public ProductDetailPage()
         {
             InitializeComponent();
-            BindingContext = new Cosmetics();
+            //BindingContext = new Cosmetics();
+        }
+
+        async void BackClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

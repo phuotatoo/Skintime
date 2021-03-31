@@ -4,6 +4,9 @@
              x:Class="Skintime.Views.ProductDetailPage">
     <ContentPage.Content>
         <StackLayout>
+            <Button Text="Back"
+                    TextColor="Black"
+                    Clicked="BackClicked"/>
             <Label Text="{Binding brand}"
                    TextColor="Black"
                  />
