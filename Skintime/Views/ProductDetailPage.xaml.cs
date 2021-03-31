@@ -39,5 +39,12 @@ namespace Skintime.Views
             InitializeComponent();
             BindingContext = new Cosmetics();
         }
+
+        async void OnBackClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new SearchPage();
+        }
+
+
     }
 }
