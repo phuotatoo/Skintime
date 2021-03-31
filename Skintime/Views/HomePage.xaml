@@ -4,16 +4,10 @@
              x:Class="Skintime.Views.HomePage">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar
-               x:Name ="Search"
-               Placeholder="Search for product"
-               CancelButtonColor="#414141"
-               PlaceholderColor="#B4B4B4"
-               TextColor="black"
-               TextTransform="Lowercase"
-               VerticalTextAlignment="Center"
-               FontSize="Medium"
-               />
+            <Button x:Name="HomeSearch"
+                    Text="Search for a product"
+                    Clicked="OnSearchClicked"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

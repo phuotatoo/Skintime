@@ -57,14 +57,14 @@
                            Padding="10,0,0,0"/>
 
                     <!-- Schedule time-->
-                    <Label Grid.Row="1" 
+                    <Label Grid.Row="2" 
                                Grid.Column="0" 
                                Text="{Binding Time}"  
                                TextColor="#bfc0c0" 
                                FontAttributes="Bold" 
                                VerticalOptions="Start"/>
                     <!-- Vertical Line-->
-                    <BoxView Grid.Row="2" 
+                    <BoxView Grid.Row="3" 
                              Grid.Column="1" 
                              WidthRequest="0" 
                              Color="Silver" 
