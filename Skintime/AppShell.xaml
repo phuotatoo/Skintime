@@ -25,7 +25,7 @@
     <TabBar>
         <ShellContent Title="Search"
                       
-                      ContentTemplate="{DataTemplate views:HomePage}" />
+                      ContentTemplate="{DataTemplate views:SearchPage}" />
         <ShellContent Title="Diary"
                       
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
