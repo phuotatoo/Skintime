@@ -40,9 +40,12 @@ namespace Skintime.Views
         {
             if (e.CurrentSelection != null)
             {
-                Cosmetics cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
-                string tmp = cosmetics.id;
-                await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={cosmetics}");
+                var cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
+
+                var DetailPage = new ProductDetailPage();
+                DetailPage.BindingContext = cosmetics;
+                await Navigation.PushAsync(DetailPage);
+                //await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={cosmetics}");
             }
             
         }

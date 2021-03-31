@@ -5,11 +5,9 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="BackHome"
-                    Text="Back"
-                    Clicked="OnBackClicked"
-                    />
-            
+            <Button Text="Back"
+                    TextColor="Black"
+                    Clicked="BackClicked"/>
             <Label Text="{Binding brand}"
                    TextColor="Black"
                  />
