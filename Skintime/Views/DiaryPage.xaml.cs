@@ -2,6 +2,7 @@
 using System.Linq;
 using Skintime.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -12,15 +13,25 @@ namespace Skintime.Views
         {
             InitializeComponent();
         }
+        public int cmp(DateTime a,DateTime b)
+        {
+            if (a < b) return 1;
+            else if (a > b) return -1;
+            //tao end chut xiu nha
+            // okey
 
+            else return 0;
+        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             // Retrieve all the notes from the database, and set them as the
             // data source for the CollectionView.
-            
-            collectionView.ItemsSource = await App.Database.GetDiaryAsync();
+            List<Diary> sorted = await App.Database.GetDiaryAsync();
+            sorted.Sort((x, y) =>cmp(x.Date,y.Date));
+            //sorted.Sort((x, y) => DateTime.Compare(y.Date,x.Date));
+            collectionView.ItemsSource = sorted;
             
         }
 

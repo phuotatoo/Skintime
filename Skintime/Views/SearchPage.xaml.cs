@@ -49,6 +49,11 @@ namespace Skintime.Views
             }
             
         }
-        
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

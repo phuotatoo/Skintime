@@ -35,6 +35,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
+                        
                         <Label Text="{Binding brand}"
                            TextColor="Black"
                            FontSize="Small" />

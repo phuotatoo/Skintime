@@ -13,13 +13,14 @@ namespace Skintime.Views
     
     public partial class ProductDetailPage : ContentPage
     {
+        //rồi á, làm gì làm i=)))
 
         /*
         public Cosmetics product
         {
             
-            set
-            {
+            set/
+            {/
                 LoadProduct(value);
 
                 async void LoadProduct(Cosmetics product)
@@ -34,7 +35,7 @@ namespace Skintime.Views
                         Console.WriteLine("Failed to load product");
                     }
                 }
-            }
+            } 
         }*/
         
         public ProductDetailPage()
@@ -43,5 +44,13 @@ namespace Skintime.Views
             //BindingContext = new Cosmetics();
         }
 
+        private void Add_Clicked(object sender, EventArgs e)
+        {
+           
+            //await Navigation.PushAsync(InventoryPage);
+            
+        }
+
+     
     }
 }
