@@ -20,10 +20,7 @@ namespace Skintime.Models
 
         [JsonProperty("ingredient_list")]
         public List<string> ingredient_list { get; set; }
-        //ồ cái này dùng json :))) quên mất
-        //json để lấy dữ liệu hui
-        //lấy xong cất poster
-        //mình lưu data offline toàn bộ bằng SQLite mà
+        
     } 
 
 }

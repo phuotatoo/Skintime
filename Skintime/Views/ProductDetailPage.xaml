@@ -4,17 +4,17 @@
              x:Class="Skintime.Views.ProductDetailPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Back"
-                    TextColor="Black"
-                    Clicked="BackClicked"/>
+            
             <Label Text="{Binding brand}"
                    TextColor="Black"
                  />
             <Label Text="{Binding name}"
                    TextColor="Black"
                 />
-            <Label Text="{Binding ingredient_list}" 
-                   TextColor="Black"
+            <ListView ItemsSource="{Binding ingredient_list}"
+                      
+            
+                   
                 />
         </StackLayout>
     </ContentPage.Content>

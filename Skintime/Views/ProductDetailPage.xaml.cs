@@ -43,9 +43,5 @@ namespace Skintime.Views
             //BindingContext = new Cosmetics();
         }
 
-        async void BackClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
     }
 }
