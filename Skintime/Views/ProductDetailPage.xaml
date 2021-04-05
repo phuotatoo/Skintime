@@ -5,6 +5,9 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <Button
+               Text="Add"
+               Clicked="Add_Clicked"/>
             
             <Label Text="{Binding brand}"
                    TextColor="Black"
@@ -12,9 +15,9 @@
             <Label Text="{Binding name}"
                    TextColor="Black"
                 />
-            <Label Text="{Binding ingredient_list}" 
-                   TextColor="Black"
-                />
+            <ListView ItemsSource="{Binding ingredient_list}"
+                      
+            />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

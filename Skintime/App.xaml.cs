@@ -9,6 +9,7 @@ namespace Skintime
     public partial class App : Application
     {
         static DiaryDatabase database;
+        
 
         public static DiaryDatabase Database
         {
