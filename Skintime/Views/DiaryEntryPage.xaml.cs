@@ -34,6 +34,7 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
+               
             }
             catch (Exception)
             {
@@ -95,6 +96,8 @@ namespace Skintime.Views
             var note = (Diary)BindingContext;
             note.Date = date.Date;
             note.Time = time.Time;
+            note.Date.Add(note.Time);
+
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);

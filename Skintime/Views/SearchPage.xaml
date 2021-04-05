@@ -8,10 +8,6 @@
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
         </Frame>
-        <Label 
-            x:Name="check"
-            FontSize="Medium"
-            TextColor="Black"/>
         <SearchBar
                x:Name ="Search"
                Placeholder="Search for product"

@@ -48,10 +48,7 @@ namespace Skintime.Views
             await Navigation.PopAsync();
         }
 
-        async void OnBackClicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new SearchPage();
-        }
+        
 
 
     }

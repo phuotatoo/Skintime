@@ -15,7 +15,7 @@ namespace Skintime.Views
        // public System.Windows.Input.ICommand SearchCommand { get; set; }
         async void OnSearchClicked(object sender, EventArgs e)
         {
-             App.Current.MainPage = new SearchPage();
+            Shell.Current.GoToAsync("searchpage");
             //await Shell.Current.GoToAsync("searchpage");
         }
             

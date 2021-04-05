@@ -2,6 +2,7 @@
 using System.Linq;
 using Skintime.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -19,8 +20,9 @@ namespace Skintime.Views
 
             // Retrieve all the notes from the database, and set them as the
             // data source for the CollectionView.
-            
-            collectionView.ItemsSource = await App.Database.GetDiaryAsync();
+            List<Diary> res = await App.Database.GetDiaryAsync();
+           
+            collectionView.ItemsSource = res;
             
         }
 

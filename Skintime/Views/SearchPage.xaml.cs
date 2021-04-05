@@ -33,7 +33,7 @@ namespace Skintime.Views
             
             List<Cosmetics> a = SearchResult.ToList();
             Coll.ItemsSource = a;
-            check.Text = a.Count().ToString();
+            //check.Text = a.Count().ToString();
         }
         
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
