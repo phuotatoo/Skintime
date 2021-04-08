@@ -28,12 +28,9 @@
                       ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent Title="Diary"
                       
-                      ContentTemplate="{DataTemplate views:DiaryPage}" />
+                      ContentTemplate="{DataTemplate views:CDiaryPage}" />
         <ShellContent Title="My Cosmetic"
                       
                       ContentTemplate="{DataTemplate views:InventoryPage}" />
-        <ShellContent Title="Profile"
-                      
-                      ContentTemplate="{DataTemplate views:ProfilePage}" />
     </TabBar>
 </Shell>

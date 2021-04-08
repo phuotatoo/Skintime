@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skintime.Views.CDiaryPage"
+             xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Calendar
+                    Events="{Binding Events}">
+                <controls:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            Padding="15,0,0,0">
+                            <Label
+                                Text="{Binding Name}"
+                                FontAttributes="Bold"
+                                FontSize="Medium" />
+                            <Label
+                                Text="{Binding Description}"
+                                FontSize="Small"
+                                LineBreakMode="WordWrap" />
+                        </StackLayout>
+                    </DataTemplate>
+                </controls:Calendar.EventTemplate>
+            </controls:Calendar>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
