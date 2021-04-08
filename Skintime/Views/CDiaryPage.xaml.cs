@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Skintime.Models;
 
 namespace Skintime.Views
 {
@@ -15,6 +16,13 @@ namespace Skintime.Views
         public CDiaryPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            List<Diary> items = await App.Database.GetDiaryAsync();
+
         }
     }
 }
