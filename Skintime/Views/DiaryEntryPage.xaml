@@ -13,12 +13,12 @@
     
     <!-- Layout children vertically -->
     <StackLayout Margin="{StaticResource PageMargin}">
-        <DatePicker TextColor="Black"
+        <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
                     Date="{Binding Date}"
                     PropertyChanged="Date_Changed"
             />
-        <TimePicker TextColor="Black"
+        <TimePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="time"
                     Time="{Binding Time}"
                     PropertyChanged="Time_Changed"
@@ -48,7 +48,7 @@
         <Editor Placeholder="Enter your note"
                 PlaceholderColor="Gray"
                 Text="{Binding Text}"
-                TextColor="Black"
+                TextColor="{StaticResource SecondaryColor}"
                 HeightRequest="70" />
         
         <!-- Layout children in two columns -->

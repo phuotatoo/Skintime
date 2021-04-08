@@ -15,7 +15,7 @@
             <Setter Property="Shell.TitleColor"
                     Value="{StaticResource SecondaryColor}" />
             <Setter Property="Shell.TabBarUnselectedColor"
-                    Value="#95FFFFFF"/>
+                    Value="White"/>
         </Style>
         <Style TargetType="TabBar"
                BasedOn="{StaticResource BaseStyle}" />
@@ -23,17 +23,12 @@
 
     <!-- Display a bottom tab bar containing two tabs -->
     <TabBar>
-        <ShellContent Title="Search"
-                      
+        <ShellContent Title="Home"
+                      Icon="monkey.png"
                       ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent Title="Diary"
-                      
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
         <ShellContent Title="My Cosmetic"
-                      
                       ContentTemplate="{DataTemplate views:InventoryPage}" />
-        <ShellContent Title="Profile"
-                      
-                      ContentTemplate="{DataTemplate views:ProfilePage}" />
     </TabBar>
 </Shell>

@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skintime.Views.HomePage">
+             x:Class="Skintime.Views.HomePage"
+             >
+    <!--link href="D:/icons/svg/fi-rr-cream.svg" rel="stylesheet"-->
+    
+            
     <ContentPage.Content>
         <StackLayout>
             <Button x:Name="HomeSearch"
                     Text="Search for a product"
                     Clicked="OnSearchClicked"
+                    BorderRadius="5"
+                    BorderWidth="2"
                     />
+            <Image Source="SearchBar"
+            WidthRequest="300"
+            HorizontalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
