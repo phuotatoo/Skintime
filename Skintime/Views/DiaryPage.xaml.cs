@@ -13,7 +13,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
         }
-        /*
+        
         public int cmp(DateTime a,DateTime b)
         {
             if (a < b) return 1;
@@ -22,7 +22,7 @@ namespace Skintime.Views
 
             else return 0;
         }
-        */
+        
 
         protected override async void OnAppearing()
         {

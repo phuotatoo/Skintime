@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Skintime.Models;
+using Xamarin.Plugin.Calendar.Models;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -91,6 +93,8 @@ namespace Skintime.Views
             BindingContext = note;
         }
 
+        public EventCollection Events { get; set; }
+
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
@@ -101,11 +105,23 @@ namespace Skintime.Views
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
+
+                /*
+                Events = new EventCollection()
+                {
+                    [new DateTime(2020, 3, 16)] = new List<Diary>
+                    {
+                        
+                    }
+                }
+                */
             }
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
         }
+
+        
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
