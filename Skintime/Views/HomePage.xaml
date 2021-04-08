@@ -10,8 +10,10 @@
         <StackLayout>
             <ImageButton x:Name="HomeSearch"
                     Source="SearchBar"
+                    WidthRequest = "370"
+                    HeightRequest = "90"
+                    BackgroundColor="Transparent"
                     HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
                     Clicked="OnSearchClicked" />
         </StackLayout>
     </ContentPage.Content>

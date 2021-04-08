@@ -6,7 +6,7 @@
     
     
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+        <Frame BackgroundColor="Transparent" Padding="24" CornerRadius="0">
         </Frame>
         <SearchBar
                x:Name ="Search"

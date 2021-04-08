@@ -5,18 +5,17 @@
              xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar" xmlns:skintime="clr-namespace:Skintime.ViewModels" x:DataType="skintime:DiaryPageViewModels">
     <ContentPage.Content>
         <StackLayout>
-            <controls:Calendar
-            Events="{Binding Events}">
+            <controls:Calendar>
                 <controls:Calendar.EventTemplate>
                     <DataTemplate>
                         <StackLayout
                 Padding="15,0,0,0">
                             <Label
-                    Text="{Binding Text}"
+                    Text="}"
                     FontAttributes="Bold"
                     FontSize="Medium" />
                             <Label
-                    Text="{Binding Date}"
+                    Text=""
                     FontSize="Small"
                     LineBreakMode="WordWrap" />
                         </StackLayout>
