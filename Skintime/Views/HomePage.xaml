@@ -8,15 +8,11 @@
             
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="HomeSearch"
-                    Text="Search for a product"
-                    Clicked="OnSearchClicked"
-                    BorderRadius="5"
-                    BorderWidth="2"
-                    />
-            <Image Source="SearchBar"
-            WidthRequest="300"
-            HorizontalOptions="Center" />
+            <ImageButton x:Name="HomeSearch"
+                    Source="SearchBar"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnSearchClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
