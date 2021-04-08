@@ -27,6 +27,8 @@
                       Icon="monkey.png"
                       ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent Title="Diary"
+                      
+                      ContentTemplate="{DataTemplate views:CDiaryPage}" />
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
         <ShellContent Title="My Cosmetic"
                       ContentTemplate="{DataTemplate views:InventoryPage}" />
