@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Skintime.Models;
@@ -14,24 +14,24 @@ namespace Skintime.Views
         public SearchPage()
         {
             InitializeComponent();
-            searchhandler.Load(MyList);
-            mycosmetics = searchhandler.LayData();
+            //searchhandler.Load(MyList);
             //Coll.ItemsSource = MyList;
         }
 
         List<String> MyList = new List<string>();
-        List<Cosmetics> mycosmetics = new List<Cosmetics>();
-        ItemSearchHandlerClass searchhandler = new ItemSearchHandlerClass();
+        IEnumerable<Cosmetics> mycosmetics = new List<Cosmetics>();
+        //ItemSearchHandlerClass searchhandler = new ItemSearchHandlerClass();
         
         private async void Search_TextChange(object sender, TextChangedEventArgs e)
         {
-            var SearchResult = mycosmetics.Where(c =>
+            List<Key> search = await App.Keydatabase.GetKeyAsync();
+            var SearchResult = search.Where(c =>
             {
                 string text1 = Search.Text;
-                return c.name.ToLower().Contains(text1.ToLower());
+                return c.productname.ToLower().Contains(text1.ToLower());
             });
             
-            List<Cosmetics> a = SearchResult.ToList();
+            List<Key> a = SearchResult.ToList();
             Coll.ItemsSource = a;
             //check.Text = a.Count().ToString();
         }
