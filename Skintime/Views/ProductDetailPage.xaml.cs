@@ -19,9 +19,9 @@ namespace Skintime.Views
         public ProductDetailPage()
         {
             InitializeComponent();
-            //Check.Text = BindingContext.GetType().ToString();
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
+            //Xem o WelcomePage
         }
 
         private async void Add_Clicked(object sender, EventArgs e)

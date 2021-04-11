@@ -21,11 +21,13 @@ namespace Skintime.Views
         {
             InitializeComponent();
             BlobCache.ApplicationName = "Skintime";
-            //Registrations.Start("Skintime");
             BlobCache.EnsureInitialized();
+            //Xem o WelcomePage
         }
-        List<Cosmetics> disp1 = new List<Cosmetics>();
-        List<InventoryCosmetics> invent1 = new List<InventoryCosmetics>();
+        List<Cosmetics> disp1 = new List<Cosmetics>(); //CollectionView itemsource
+        List<InventoryCosmetics> invent1 = new List<InventoryCosmetics>(); //Init disp1
+        //Tạo InventoryCosmetics để tránh conflict với Cosmetics có sẵn trong database 
+        //do Akavache lưu dưới dạng key-value nên mỗi Cosmetics với 1 cặp key-value là unique
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -35,6 +37,7 @@ namespace Skintime.Views
             tmp.added.name = "push";
             BlobCache.Secure.InsertObject<InventoryCosmetics>("push", tmp);
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => invent1 = X.ToList());
+            //Get objects from memory
             foreach (InventoryCosmetics a in invent1)
             {
                 if (a.added.name != "push") disp1.Add(a.added);
@@ -59,6 +62,7 @@ namespace Skintime.Views
         async void Delete_Clicked(object sender, EventArgs e)
         {
             BlobCache.Secure.InvalidateAllObjects<InventoryCosmetics>();
+            //Delete all objects
             Disp1Coll.ItemsSource = new List<Cosmetics>();
         }
 
