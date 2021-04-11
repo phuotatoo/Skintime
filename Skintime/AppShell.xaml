@@ -24,13 +24,14 @@
     <!-- Display a bottom tab bar containing two tabs -->
     <TabBar>
         <ShellContent Title="Home"
-                      Icon="monkey.png"
+                      Icon="home.png"
                       ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent Title="Diary"
                       
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
                       
         <ShellContent Title="My Cosmetic"
+                      Icon="cream.png"
                       ContentTemplate="{DataTemplate views:InventoryPage}" />
     </TabBar>
 </Shell>

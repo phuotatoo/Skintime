@@ -25,7 +25,7 @@ namespace Skintime
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new WelcomePage();
         }
 
         protected override void OnStart()

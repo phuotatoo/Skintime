@@ -15,8 +15,6 @@ namespace Skintime
             Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
             Routing.RegisterRoute(nameof(SearchPage), typeof(SearchPage));
             Routing.RegisterRoute(nameof(InventoryPage), typeof(InventoryPage));
-           
-            
         }
     }
 }
