@@ -17,18 +17,20 @@ namespace Skintime.Views
             InitializeComponent();
             BlobCache.ApplicationName = "Skintime";
             Registrations.Start("Skintime");
-            //BlobCache.UserAccount.GetObjects<Cosmetics>().Subscribe(x => mycosmetics = x.ToList());
+            BlobCache.EnsureInitialized();
+            BlobCache.Secure.GetAllObjects<Cosmetics>().Subscribe(x => mycosmetics = x.ToList());
             Coll.ItemsSource = mycosmetics;
-            Search.Text = mycosmetics.Count.ToString();
+            //Search.Text = mycosmetics.Count.ToString();
         }
 
-        List<Key> MyList = new List<Key>();
+        //List<Key> MyList = new List<Key>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
         
         private async void Search_TextChange(object sender, TextChangedEventArgs e)
         {
-            MyList = await App.Keydatabase.GetKeyAsync();
-            var SearchResult1 = MyList.Where(c =>
+            //Search.Text = mycosmetics.Count.ToString();
+            //MyList = await App.Keydatabase.GetKeyAsync();
+            var SearchResult1 = mycosmetics.Where(c =>
             {
                 string text1 = Search.Text;
                 return c.name.ToLower().Contains(text1.ToLower());
@@ -38,16 +40,10 @@ namespace Skintime.Views
                 string text1 = Search.Text;
                 return c.brand.ToLower().Contains(text1.ToLower());
             });
-            List<Key> a = SearchResult1.ToList();
-            List<Cosmetics> res = new List<Cosmetics>();
-            foreach (Key tmp in a)
-            {
-                Cosmetics push = new Cosmetics();
-                BlobCache.InMemory.GetObject<Cosmetics>(tmp.name).Subscribe(X => push = X);
-                res.Add(push);
-            }
+            List<Cosmetics> a = SearchResult1.ToList();
+            //List<Cosmetics> res = new List<Cosmetics>();
             //Search.Text = MyList.Count.ToString();
-            Coll.ItemsSource = res;
+            Coll.ItemsSource = a;
             //check.Text = a.Count().ToString();
         }
         

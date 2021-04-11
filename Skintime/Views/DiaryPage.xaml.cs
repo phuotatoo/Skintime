@@ -13,7 +13,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
         }
-        /*
+        
         public int cmp(DateTime a,DateTime b)
         {
             if (a < b) return 1;
@@ -22,7 +22,7 @@ namespace Skintime.Views
 
             else return 0;
         }
-        */
+        
 
         protected override async void OnAppearing()
         {
@@ -30,14 +30,10 @@ namespace Skintime.Views
 
             // Retrieve all the notes from the database, and set them as the
             // data source for the CollectionView.
-            List<Diary> items = await App.Database.GetDiaryAsync();
-
-            /*
-            sorted.Sort((x, y) =>cmp(x.Date,y.Date));
-            //sorted.Sort((x, y) => DateTime.Compare(y.Date,x.Date));
+            List<Diary> sorted = await App.Database.GetDiaryAsync();
+            //sorted.Sort((x, y) =>cmp(x.Date,y.Date));
+            sorted.Sort((x, y) => DateTime.Compare(y.Date,x.Date));
             collectionView.ItemsSource = sorted;
-            */
-            
         }
 
         async void OnAddClicked(object sender, EventArgs e)

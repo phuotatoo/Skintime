@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Akavache;
 using Xamarin.Forms;
 using Skintime.Models;
+using System.Globalization;
 
 namespace Skintime.Views
 {
@@ -13,42 +14,26 @@ namespace Skintime.Views
     
     public partial class ProductDetailPage : ContentPage
     {
-        //rồi á, làm gì làm i=)))
-
-        /*
-        public Cosmetics product
-        {
-            
-            set/
-            {/
-                LoadProduct(value);
-
-                async void LoadProduct(Cosmetics product)
-                {
-                    try
-                    {
-
-                        BindingContext = product;
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Failed to load product");
-                    }
-                }
-            } 
-        }*/
+        
         
         public ProductDetailPage()
         {
             InitializeComponent();
-            //BindingContext = new Cosmetics();
+            //Check.Text = BindingContext.GetType().ToString();
+            BlobCache.ApplicationName = "Skintime";
+            BlobCache.EnsureInitialized();
         }
 
-        private void Add_Clicked(object sender, EventArgs e)
+        private async void Add_Clicked(object sender, EventArgs e)
         {
-           
-            //await Navigation.PushAsync(InventoryPage);
-            
+            //Add cosmetics to database
+            InventoryCosmetics add = new InventoryCosmetics();
+            add.added = (Cosmetics)BindingContext;
+            BlobCache.Secure.InsertObject<InventoryCosmetics>(add.added.name, add);
+            BlobCache.Secure.Flush();
+
+            //Navigate to InventoryPage
+            await Shell.Current.GoToAsync("..");
         }
 
      

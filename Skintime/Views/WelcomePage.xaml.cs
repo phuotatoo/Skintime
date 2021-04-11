@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Reactive.Linq;
 using Skintime.Models;
 using Skintime.Views;
+using System.Globalization;
 
 namespace Skintime
 {
@@ -42,35 +43,28 @@ namespace Skintime
         {
             base.OnAppearing();
             BlobCache.ApplicationName = "Skintime";
-            Registrations.Start("Skintime");
+            BlobCache.EnsureInitialized();
             await Task.Delay(3000); //Time-consuming processes such as initialization
             await splashImage.FadeTo(0, 1000, Easing.SinInOut);
 
             List<Key> check = await App.Keydatabase.GetKeyAsync();
-            List<Cosmetics> check2 = new List<Cosmetics>();
-            BlobCache.InMemory.GetAllObjects<Cosmetics>().Subscribe(X => check2 = X.ToList());
-            if (check2.Count == 0)
+            if (check.Count == 0)
             {
                 ItemSearchHandlerClass tmp = new ItemSearchHandlerClass();
                 List<Cosmetics> collected = tmp.LayData();
                 foreach(Cosmetics a in collected)
                 {
                     Key tmpkey = new Key();
+                    a.brand = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.brand.ToLower());
+                    a.name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.name.ToLower());
                     tmpkey.brand = a.brand;
                     tmpkey.name = a.name;
                     App.Keydatabase.SaveKeyAsync(tmpkey);
-                    try
-                    {
-                        await BlobCache.InMemory.InsertObject(a.name, a);
-                    }
-                    catch (Exception)
-                    {
-                        App.Current.MainPage = new DiaryPage();
-                        break;
-                    }
+                    await BlobCache.Secure.InsertObject(a.name, a);
                 }
             }
-            else Application.Current.MainPage = new AppShell();   //After loading  MainPage it gets Navigated to our new Page
+
+            Application.Current.MainPage = new AppShell();   //After loading  MainPage it gets Navigated to our new Page
         }
     }
 }

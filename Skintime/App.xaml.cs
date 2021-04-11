@@ -32,7 +32,7 @@ namespace Skintime
             {
                 if (keydatabase == null)
                 {
-                    keydatabase = new KeyDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tmpkey.db3"));
+                    keydatabase = new KeyDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tmpkey1.db3"));
                 }
                 return keydatabase;
             }
@@ -40,28 +40,13 @@ namespace Skintime
         public App()
         {
             InitializeComponent();
-
-            Registrations.Start("Skintime");
-            MainPage = new SearchPage();
+            
+            MainPage = new WelcomePage();
         }
         
         protected override async void OnStart()
         {
-            List<Key> check = await App.keydatabase.GetKeyAsync();
-            ItemSearchHandlerClass itemsearch = new ItemSearchHandlerClass();
-            if (check.Count == 0)
-            {
-                //Insert loading page
-                List<Cosmetics> collected = itemsearch.LayData();
-                foreach (Cosmetics a in collected)
-                {
-                    Key tmp = new Key();
-                    tmp.brand = a.brand;
-                    tmp.name = a.name;
-                    BlobCache.InMemory.InsertObject<Cosmetics>(a.name, a);
-                    await App.Keydatabase.SaveKeyAsync(tmp);
-                }
-            }
+            
         }
 
         protected override void OnSleep()
