@@ -16,7 +16,6 @@ namespace Skintime.Views
             InitializeComponent();
             searchhandler.Load(MyList);
             mycosmetics = searchhandler.LayData();
-            //Coll.ItemsSource = MyList;
         }
 
         List<String> MyList = new List<string>();
@@ -33,7 +32,6 @@ namespace Skintime.Views
             
             List<Cosmetics> a = SearchResult.ToList();
             Coll.ItemsSource = a;
-            //check.Text = a.Count().ToString();
         }
         
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -45,7 +43,6 @@ namespace Skintime.Views
                 var DetailPage = new ProductDetailPage();
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
-                //await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={cosmetics}");
             }
             
         }
