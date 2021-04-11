@@ -38,7 +38,7 @@ namespace Skintime
         {
             base.OnAppearing();
 
-            await Task.Delay(3000); //Time-consuming processes such as initialization
+            await Task.Delay(2000); //Time-consuming processes such as initialization
             await splashImage.FadeTo(0, 1000, Easing.SinInOut);
             Application.Current.MainPage = new AppShell();   //After loading  MainPage it gets Navigated to our new Page
         }

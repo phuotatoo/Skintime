@@ -52,8 +52,6 @@ namespace Skintime.Models
         protected override async void OnItemSelected(object item)
         {
             base.OnItemSelected(item);
-            // Let the animation completed
-            await Task.Delay(1000);
             ShellNavigationState state = (App.Current.MainPage as Shell).CurrentState;
             // The following route works because route names are unique in this application.
             //await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?{nameof(ProductDetailPage.product)}={((Cosmetics)item)}");
