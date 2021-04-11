@@ -5,14 +5,17 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Button
-               Text="Add"
-               Clicked="Add_Clicked"/>
-            
-            <Label Text="{Binding brand}"
+            <Button 
+                    Text="Add to inventory"
+                    Clicked="Add_Clicked"/>
+            <Label x:Name="Check"
+                   TextColor="Black"/>
+            <Label x:Name="productbrand"
+                   Text="{Binding brand}"
                    TextColor="Black"
                  />
-            <Label Text="{Binding name}"
+            <Label x:Name="productname"
+                   Text="{Binding name}"
                    TextColor="Black"
                 />
             <ListView ItemsSource="{Binding ingredient_list}"

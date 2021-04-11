@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Skintime.Models;
@@ -13,24 +13,36 @@ namespace Skintime.Views
     {
         public SearchPage()
         {
+            
             InitializeComponent();
-            searchhandler.Load(MyList);
-            mycosmetics = searchhandler.LayData();
+            BlobCache.ApplicationName = "Skintime";
+            Registrations.Start("Skintime");
+            BlobCache.EnsureInitialized();
+            BlobCache.Secure.GetAllObjects<Cosmetics>().Subscribe(x => mycosmetics = x.ToList());
+            Coll.ItemsSource = mycosmetics;
+            //Search.Text = mycosmetics.Count.ToString();
         }
 
-        List<String> MyList = new List<string>();
+        //List<Key> MyList = new List<Key>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
-        ItemSearchHandlerClass searchhandler = new ItemSearchHandlerClass();
         
         private async void Search_TextChange(object sender, TextChangedEventArgs e)
         {
-            var SearchResult = mycosmetics.Where(c =>
+            //Search.Text = mycosmetics.Count.ToString();
+            //MyList = await App.Keydatabase.GetKeyAsync();
+            var SearchResult1 = mycosmetics.Where(c =>
             {
                 string text1 = Search.Text;
                 return c.name.ToLower().Contains(text1.ToLower());
             });
-            
-            List<Cosmetics> a = SearchResult.ToList();
+            var SearchResult2 = mycosmetics.Where(c =>
+            {
+                string text1 = Search.Text;
+                return c.brand.ToLower().Contains(text1.ToLower());
+            });
+            List<Cosmetics> a = SearchResult1.ToList();
+            //List<Cosmetics> res = new List<Cosmetics>();
+            //Search.Text = MyList.Count.ToString();
             Coll.ItemsSource = a;
         }
         

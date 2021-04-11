@@ -1,8 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 using Skintime.Models;
-using Xamarin.Plugin.Calendar.Models;
+using System.Reactive.Linq;
+using Akavache;
 using System.Collections.Generic;
+using System.Linq;
+using System.Globalization;
 
 namespace Skintime.Views
 {
@@ -21,8 +24,17 @@ namespace Skintime.Views
         {
             InitializeComponent();
             // Set the BindingContext of the page to a new Diary.
+            BlobCache.ApplicationName = "Skintime";
+            BlobCache.EnsureInitialized();
             BindingContext = new Diary();
-            
+            List<string>dispchooselist= new List<string>();
+            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            foreach (InventoryCosmetics a in chooselist)
+            {
+                picker.Items.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.added.name));
+            }
+            //picker.ItemsSource = dispchooselist;
         }
 
         async void LoadDiary(string itemId)

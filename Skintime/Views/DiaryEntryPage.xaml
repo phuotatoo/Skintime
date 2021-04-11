@@ -24,7 +24,12 @@
                     PropertyChanged="Time_Changed"
             />
         
-        <Picker Title="Product"
+        <Picker x:Name="picker" 
+                Title="Choose your product"
+                FontSize="13"
+                TextColor="Black"
+                BackgroundColor="White"
+                ItemDisplayBinding="{Binding name}"
             />
 
         <StackLayout Orientation="Horizontal">
