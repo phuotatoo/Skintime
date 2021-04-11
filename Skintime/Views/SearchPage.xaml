@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skintime.Views.SearchPage">
 
-    
-    
     <StackLayout>
         <Frame BackgroundColor="Transparent" Padding="24" CornerRadius="0">
         </Frame>
@@ -42,6 +40,9 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Text ="Click to Add Product"
+                Clicked="AddProduct_Clicked"/>
 
     </StackLayout>
 </ContentPage>

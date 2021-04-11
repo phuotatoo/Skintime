@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Threading.Tasks;
 using System.Reactive.Linq;
 using Skintime.Models;
-using Skintime.Views;
 using System.Globalization;
 
 namespace Skintime
@@ -59,7 +54,7 @@ namespace Skintime
                     a.name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.name.ToLower());
                     tmpkey.brand = a.brand;
                     tmpkey.name = a.name;
-                    App.Keydatabase.SaveKeyAsync(tmpkey);
+                    await App.Keydatabase.SaveKeyAsync(tmpkey);
                     await BlobCache.Secure.InsertObject(a.name, a);
                 }
             }

@@ -43,10 +43,10 @@ namespace Skintime
             
             MainPage = new WelcomePage();
         }
-        
-        protected override async void OnStart()
+
+        protected override void OnStart()
         {
-            
+
         }
 
         protected override void OnSleep()

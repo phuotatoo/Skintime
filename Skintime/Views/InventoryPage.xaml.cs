@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Threading.Tasks;
 using System.Reactive.Linq;
 using Skintime.Models;
-using Skintime.Views;
-using System.Globalization;
 
 namespace Skintime.Views
 {
@@ -58,7 +53,7 @@ namespace Skintime.Views
 
         async void Delete_Clicked(object sender, EventArgs e)
         {
-            BlobCache.Secure.InvalidateAllObjects<InventoryCosmetics>();
+            await BlobCache.Secure.InvalidateAllObjects<InventoryCosmetics>();
             Disp1Coll.ItemsSource = new List<Cosmetics>();
         }
 

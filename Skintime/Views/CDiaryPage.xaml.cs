@@ -22,7 +22,7 @@ namespace Skintime.Views
 
         public EventCollection Events { get; set; }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             Events = new EventCollection

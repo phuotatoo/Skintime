@@ -5,6 +5,8 @@ using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Skintime.Models;
+using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace Skintime.Views
 {
@@ -25,8 +27,8 @@ namespace Skintime.Views
 
         //List<Key> MyList = new List<Key>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
-        
-        private async void Search_TextChange(object sender, TextChangedEventArgs e)
+
+        private void Search_TextChange(object sender, TextChangedEventArgs e)
         {
             //Search.Text = mycosmetics.Count.ToString();
             //MyList = await App.Keydatabase.GetKeyAsync();
@@ -45,7 +47,7 @@ namespace Skintime.Views
             //Search.Text = MyList.Count.ToString();
             Coll.ItemsSource = a;
         }
-        
+
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
@@ -59,10 +61,35 @@ namespace Skintime.Views
             
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void AddProduct_Clicked(object sender, EventArgs e)
         {
-
+            bool res = Add() ;
+            if (res) ((Button)sender).Text = "OK";
+            else ((Button)sender).Text = "NOT";
         }
 
+        static bool Add()
+        {
+
+            using (var client = new HttpClient())
+            {
+                Cosmetics p = new Cosmetics();
+
+                p.name = "a";
+                p.brand = "b";
+                p.ingredient_list[1] = "c";
+                p.ingredient_list[2] = "d";
+
+                client.BaseAddress = new Uri("https://skincare-api.herokuapp.com");
+                var response = client.PostAsJsonAsync("/products", p).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
     }
+
 }

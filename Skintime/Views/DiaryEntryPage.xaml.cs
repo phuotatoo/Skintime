@@ -27,14 +27,14 @@ namespace Skintime.Views
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
             BindingContext = new Diary();
-            List<string>dispchooselist= new List<string>();
+            List<string> dispchooselist = new List<string>();
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
             foreach (InventoryCosmetics a in chooselist)
             {
                 picker.Items.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.added.name));
             }
-            //picker.ItemsSource = dispchooselist;
+            picker.ItemsSource = dispchooselist;
         }
 
         async void LoadDiary(string itemId)
@@ -69,26 +69,26 @@ namespace Skintime.Views
                 (sender as Button).TextColor = Color.Black;
             }
         }
-        
-        async void Time_Changed(object sender, EventArgs e)
+
+        void Time_Changed(object sender, EventArgs e)
         {
             /*var diary = (Diary)BindingContext;
             chosentime = diary.Time;*/
         }
-        async void Date_Changed(object sender, EventArgs e)
+        void Date_Changed(object sender, EventArgs e)
         {
             /*var diary = (Diary)BindingContext;
             chosendate = diary.Date;*/
         }
-        async void OnNormalButtonClicked(object sender, EventArgs e)
+        void OnNormalButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
             note.Normal = !note.Normal;
             ChangeColor(sender, note.Normal);
             BindingContext = note;
         }
-        
-        async void OnAcneButtonClicked(object sender, EventArgs e)
+
+        void OnAcneButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
             note.Acne = !note.Acne;
@@ -97,7 +97,7 @@ namespace Skintime.Views
         }
 
 
-        async void OnEczemaButtonClicked(object sender, EventArgs e)
+        void OnEczemaButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
             note.Eczema = !note.Eczema;
@@ -105,7 +105,7 @@ namespace Skintime.Views
             BindingContext = note;
         }
 
-        public EventCollection Events { get; set; }
+
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
