@@ -25,11 +25,27 @@ namespace Skintime
         public App()
         {
             InitializeComponent();
-            MainPage = new WelcomePage();
-        }
 
-        protected override void OnStart()
+            Registrations.Start("Skintime");
+            MainPage = new SearchPage();
+        }
+        
+        protected override async void OnStart()
         {
+            List<Key> check = await App.keydatabase.GetKeyAsync();
+            if (check.Count == 0)
+            {
+                //Insert loading page
+                List<Cosmetics> collected = itemsearch.LayData();
+                foreach (Cosmetics a in collected)
+                {
+                    Key tmp = new Key();
+                    tmp.productbrand = a.brand;
+                    tmp.productname = a.name;
+                    await BlobCache.InMemory.InsertObject<Cosmetics>(a.name, a);
+                    await App.Keydatabase.SaveKeyAsync(tmp);
+                }
+            }
         }
 
         protected override void OnSleep()
