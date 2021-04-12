@@ -18,7 +18,7 @@
             Clicked="Load_Clicked"/>
         <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
-                    DateSelected="OnDateSelected"
+                    Date="{Binding Date}"
              
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"

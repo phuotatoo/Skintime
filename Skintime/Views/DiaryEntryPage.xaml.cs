@@ -67,10 +67,7 @@ namespace Skintime.Views
             }
         }
         string itemid;
-        async void OnDateSelected(object sender, DateChangedEventArgs args)
-        {
-            
-        }
+        
 
         public void ChangeColor(object sender, bool state)
         {
@@ -116,24 +113,18 @@ namespace Skintime.Views
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
-            note.Date = date.Date;
-            note.Time = time.Time;
-            note.Date.Add(note.Time);
+
+            DateTime temp = date.Date + time.Time;
+            //note.datetime = date.Date;
+            //note.datetime.Add(time.Time);
+
+            note.datetime = temp;
 
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
-
-                /*
-                Events = new EventCollection()
-                {
-                    [new DateTime(2020, 3, 16)] = new List<Diary>
-                    {
-                        
-                    }
-                }
-                */
             }
+                
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");

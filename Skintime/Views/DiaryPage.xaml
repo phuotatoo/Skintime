@@ -45,19 +45,13 @@
 
 
                     <!-- Date description-->
-                    <Label Text="{Binding Date, StringFormat='{}{0:dddd, dd MMMM yyyy}'}"
+                    <Label Text="{Binding datetime, StringFormat='{0:dddd, dd MMMM yyyy hh:mm tt}'}"
                            TextColor="#535257" 
                            FontAttributes="Bold"                                
                            Grid.Row="0"
                            Grid.Column="0"/>
 
-                    <!-- Schedule time-->
-                    <Label Grid.Row="1" 
-                            Grid.Column="0" 
-                            Text="{Binding Time}"  
-                            TextColor="#bfc0c0" 
-                            FontAttributes="Bold" 
-                            VerticalOptions="Start"/>
+                    
                     <!-- Vertical Line-->
                     <BoxView Grid.Row="2" 
                              Grid.Column="0" 
