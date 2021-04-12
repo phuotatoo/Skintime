@@ -39,11 +39,7 @@
                     Margin="{StaticResource PageMargin}" >
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
-
-                    <!--Schedule timeline-->
-
-
+                <StackLayout>
                     <!-- Date description-->
                     <Label Text="{Binding datetime, StringFormat='{0:dddd, dd MMMM yyyy hh:mm tt}'}"
                            TextColor="#535257" 
@@ -51,31 +47,34 @@
                            Grid.Row="0"
                            Grid.Column="0"/>
 
-                    
-                    <!-- Vertical Line-->
-                    <BoxView Grid.Row="2" 
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
+                        <!-- Vertical Line-->
+                        <BoxView Grid.Row="0" 
                              Grid.Column="0" 
                              WidthRequest="4" 
                              Color="#39603D" 
                              HeightRequest="120" 
                                  />
-                    <!-- Card -->
-                    <Frame Grid.Row="2" 
+                        <!-- Card -->
+                        <Frame Grid.Row="0" 
                                Grid.RowSpan="2" 
                                Grid.Column="1" 
                                CornerRadius="25" 
                                HasShadow="False" 
                                >
-                        <StackLayout>
-                            <Label Text="{Binding Text}" 
+                            <StackLayout>
+                                <Label Text="{Binding Text}" 
                                        FontAttributes="Bold" 
                                        TextColor="#535257" 
                                        FontSize="18"/>
-
-                            <!-- Skin condition below-->
-                        </StackLayout>
-                    </Frame>
-                </Grid>
+                                <!-- Skin condition below-->
+                                
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                
+                    
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

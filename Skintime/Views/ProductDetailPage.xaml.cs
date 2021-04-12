@@ -33,9 +33,11 @@ namespace Skintime.Views
 
             KetQua tmp = new KetQua();
             tmp.key = add.added.name;
-            App.Inventorydatabase.SaveKeyAsync(tmp);
+            await App.Inventorydatabase.SaveKeyAsync(tmp);
+
             //Navigate to InventoryPage
-            await Shell.Current.GoToAsync("..");
+            //await Shell.Current.GoToAsync("///Inven");
+            await 
         }
 
         async void Delete_Clicked(object sender, EventArgs e)
@@ -47,10 +49,10 @@ namespace Skintime.Views
             BlobCache.Secure.Flush();
             KetQua tmp = new KetQua();
             tmp.key = add.added.name;
-            App.Inventorydatabase.DeleteKeyAsync(tmp);
+            await App.Inventorydatabase.DeleteKeyAsync(tmp);
 
             //Navigate to InventoryPage
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("///Inven");
         }
     }
 }

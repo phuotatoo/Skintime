@@ -32,6 +32,7 @@
                       
         <ShellContent Title="My Cosmetic"
                       Icon="cream.png"
-                      ContentTemplate="{DataTemplate views:InventoryPage}" />
+                      ContentTemplate="{DataTemplate views:InventoryPage}" 
+                      Route="Inven"/>
     </TabBar>
 </Shell>

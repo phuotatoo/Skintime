@@ -48,7 +48,7 @@ namespace Skintime.Views
             
         }
 
-        async void Load_Clicked (object sender, EventArgs e)
+        async void Load_Clicked(object sender, EventArgs e)
         {
             /*if (picker.Items.Count == 0)
             {
@@ -154,15 +154,13 @@ namespace Skintime.Views
 
             note.datetime = temp;
 
-            note.Date = date.Date;
-            note.Time = time.Time;
-            note.Date.Add(note.Time);
+            
             note.Product = picker.SelectedItem.ToString();
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
             }
-                
+
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
