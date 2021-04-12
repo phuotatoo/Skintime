@@ -11,7 +11,10 @@ namespace Skintime.Views
     
     public partial class ProductDetailPage : ContentPage
     {
-        
+        Image BG = new Image
+        {
+            Source = "LeafBackground.png",
+        };
         
         public ProductDetailPage(string check)
         {
