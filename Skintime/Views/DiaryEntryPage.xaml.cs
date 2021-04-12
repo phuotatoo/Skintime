@@ -1,11 +1,11 @@
 ﻿using System;
-using Xamarin.Forms;
-using Skintime.Models;
-using System.Reactive.Linq;
-using Akavache;
 using System.Collections.Generic;
 using System.Linq;
-using System.Globalization;
+using Akavache;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.Reactive.Linq;
+using Skintime.Models;
 
 namespace Skintime.Views
 {
@@ -24,8 +24,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
             // Set the BindingContext of the page to a new Diary.
-            BlobCache.ApplicationName = "Skintime";
-            BlobCache.EnsureInitialized();
+            
             BindingContext = new Diary();
 
             //set min max date date picker
@@ -37,46 +36,74 @@ namespace Skintime.Views
 
         protected override async void OnAppearing()
         {
-            /*List<Cosmetics> res = new List<Cosmetics>();
+            BlobCache.ApplicationName = "Skintime";
+            BlobCache.EnsureInitialized();
+            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+            List<Cosmetics> disp1 = new List<Cosmetics>();
+            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            //BlobCache.Secure.Dispose();
+            //picker.Title = chooselist.Count.ToString();
+            if (picker.Items.Count==0)
+            {
+                var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                chooselist = list.ToList();
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    disp1.Add(a.added);
+                }
+                foreach (Cosmetics a in disp1)
+                {
+                    picker.Items.Add(a.name);
+                }
+            }
+            //else picker.Title = "Nothing here";
             List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
             foreach (KetQua tmp in getres)
             {
                 Cosmetics push = new Cosmetics();
                 BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
-                picker.Items.Add(push.name);
-            }*/
-            
+                //picker.Items.Add((string)push.name);
+            }
+            picker.FontSize = 13;
+            picker.TextColor = Color.Black;
+            picker.Title = "Choose your item";
         }
 
         async void Load_Clicked(object sender, EventArgs e)
         {
-            /*if (picker.Items.Count == 0)
-            {
-                //List<string> dispchooselist = new List<string>();
-                List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-                BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
-                picker.Title = chooselist.Count.ToString();
-                foreach (InventoryCosmetics a in chooselist)
-                {
-                    picker.Items.Add(a.added.name);
-                }
-                //picker.ItemsSource = dispchooselist;
-            }*/
-            picker = new Picker();
-            picker.FontSize = 13;
-            picker.TextColor = Color.Black;
-            picker.Title = "Choose your product";
+            //BlobCache.ApplicationName = "Skintime";
+            //BlobCache.EnsureInitialized();
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+            List<Cosmetics> disp1 = new List<Cosmetics>();
+            var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            //BlobCache.Secure.Dispose();
             //picker.Title = chooselist.Count.ToString();
-            if (chooselist.Count != 0)
+            chooselist = list.ToList();
+            if (picker.Items.Count == 0)
             {
+                //var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                chooselist = list.ToList();
                 foreach (InventoryCosmetics a in chooselist)
                 {
-                    picker.Items.Add("Hi");
+                    disp1.Add(a.added);
+                }
+                foreach (Cosmetics a in disp1)
+                {
+                    picker.Items.Add(a.name);
                 }
             }
-            else picker.Title = "Nothing here";
+            //else picker.Title = "Nothing here";
+            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
+            foreach (KetQua tmp in getres)
+            {
+                Cosmetics push = new Cosmetics();
+                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
+                //picker.Items.Add((string)push.name);
+            }
+            picker.FontSize = 13;
+            picker.TextColor = Color.Black;
+            picker.Title = "Choose your item";
         }
 
         async void LoadDiary(string itemId)
@@ -93,7 +120,6 @@ namespace Skintime.Views
                 picker.SelectedItem = note.Product;
                 itemid = itemId;
                 
-
             }
             catch (Exception)
             {
