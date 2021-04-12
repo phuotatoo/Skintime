@@ -21,7 +21,7 @@ namespace Skintime
         Image splashImage;
         public WelcomePage()
         {
-            
+            InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             var sub = new AbsoluteLayout();
             splashImage = new Image
