@@ -10,13 +10,13 @@
                Clicked="Add_Clicked"/>
             
             <Label Text="{Binding brand}"
-                   TextColor="Black"
+                   TextColor="#39603D"
                  />
             <Label Text="{Binding name}"
-                   TextColor="Black"
+                   TextColor="#3C403D"
                 />
             <ListView ItemsSource="{Binding ingredient_list}"
-                      
+                     
             />
         </StackLayout>
     </ContentPage.Content>
