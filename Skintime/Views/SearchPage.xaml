@@ -41,8 +41,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text ="Click to Add Product"
-                Clicked="AddProduct_Clicked"/>
+        
 
     </StackLayout>
 </ContentPage>

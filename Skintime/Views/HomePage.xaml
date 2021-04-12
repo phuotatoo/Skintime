@@ -15,8 +15,8 @@
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
                     Clicked="OnSearchClicked" />
-            <Label x:Name="check"
-                   TextColor="Black"/>
+            <Button Text ="Click to Add Product"
+                Clicked="AddProduct_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

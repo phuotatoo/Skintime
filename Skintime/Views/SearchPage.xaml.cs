@@ -54,42 +54,15 @@ namespace Skintime.Views
             {
                 var cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
 
-                var DetailPage = new ProductDetailPage();
+                var DetailPage = new ProductDetailPage("search");
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
+                
             }
             
         }
 
-        private void AddProduct_Clicked(object sender, EventArgs e)
-        {
-            bool res = Add() ;
-            if (res) ((Button)sender).Text = "OK";
-            else ((Button)sender).Text = "NOT";
-        }
-
-        static bool Add()
-        {
-
-            using (var client = new HttpClient())
-            {
-                Cosmetics p = new Cosmetics();
-
-                p.name = "a";
-                p.brand = "b";
-                p.ingredient_list[1] = "c";
-                p.ingredient_list[2] = "d";
-
-                client.BaseAddress = new Uri("https://skincare-api.herokuapp.com");
-                var response = client.PostAsJsonAsync("/products", p).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-        }
+        
     }
 
 }

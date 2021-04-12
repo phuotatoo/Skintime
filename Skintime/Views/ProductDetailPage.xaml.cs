@@ -16,10 +16,11 @@ namespace Skintime.Views
     {
         
         
-        public ProductDetailPage()
+        public ProductDetailPage(string check)
         {
             InitializeComponent();
             //Check.Text = BindingContext.GetType().ToString();
+            if (check == "inventory") AddButton.IsVisible = false;
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
         }

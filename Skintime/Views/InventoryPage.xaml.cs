@@ -45,7 +45,7 @@ namespace Skintime.Views
                 var cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
 
                 //Navigate to DetailPage
-                var DetailPage = new ProductDetailPage();
+                var DetailPage = new ProductDetailPage("inventory");
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
             }

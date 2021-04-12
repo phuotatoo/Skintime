@@ -5,7 +5,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Button 
+            <Button x:Name="AddButton"
                     Text="Add to inventory"
                     Clicked="Add_Clicked"/>
             <Label x:Name="Check"
