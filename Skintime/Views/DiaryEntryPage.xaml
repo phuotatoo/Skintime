@@ -17,6 +17,8 @@
                     x:Name="date"
                     Date="{Binding Date}"
                     PropertyChanged="Date_Changed"
+                    
+                    
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="time"

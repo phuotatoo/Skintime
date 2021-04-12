@@ -27,14 +27,12 @@ namespace Skintime.Views
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
             BindingContext = new Diary();
-            List<string> dispchooselist = new List<string>();
-            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
-            foreach (InventoryCosmetics a in chooselist)
-            {
-                picker.Items.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.added.name));
-            }
-            picker.ItemsSource = dispchooselist;
+
+            //set min max date date picker
+            date.MinimumDate = new DateTime(2020, 1, 1);
+            date.MaximumDate = DateTime.Now;
+
+
         }
 
         async void LoadDiary(string itemId)
@@ -48,7 +46,15 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
-               
+                
+                List<string> dispchooselist = new List<string>();
+                List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+                BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    picker.Items.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.added.name));
+                }
+                picker.ItemsSource = dispchooselist;
             }
             catch (Exception)
             {
