@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skintime.Views.AddCosmeticPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Name"
+                PlaceholderColor="Gray"
+                Text="{Binding name}"
+                TextColor="{StaticResource SecondaryColor}"
+                HeightRequest="70" />
+            <Entry Placeholder="Brand"
+                PlaceholderColor="Gray"
+                Text="{Binding brand}"
+                TextColor="{StaticResource SecondaryColor}"
+                HeightRequest="70" />
+            <Entry Placeholder="Ingredient"
+                PlaceholderColor="Gray"
+                Text="{Binding list}"
+                TextColor="{StaticResource SecondaryColor}"
+                HeightRequest="70" />
+            <Button
+                Text="Save"
+                Clicked="Save_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

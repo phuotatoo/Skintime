@@ -15,6 +15,8 @@
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
                     Clicked="OnSearchClicked" />
+            <Button Text ="Click to Add Product"
+                Clicked="AddProduct_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

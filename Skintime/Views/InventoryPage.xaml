@@ -4,9 +4,31 @@
              x:Class="Skintime.Views.InventoryPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button 
+                Text="Delete"
+                Clicked="Delete_Clicked"/>
+            <CollectionView
+                x:Name="Disp1Coll"
+                SelectionMode="Single"
+                SelectionChanged="OnSelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding brand}"
+                           TextColor="Black"
+                           FontSize="Small" />
+                            <Label Text="{Binding name}"
+                           TextColor="Black"
+                           FontSize="Medium" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

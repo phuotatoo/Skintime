@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Skintime.Models;
 using Xamarin.Plugin.Calendar.Models;
+using Skintime.Data;
 
 namespace Skintime.Views
 {
@@ -21,7 +22,7 @@ namespace Skintime.Views
 
         public EventCollection Events { get; set; }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             Events = new EventCollection

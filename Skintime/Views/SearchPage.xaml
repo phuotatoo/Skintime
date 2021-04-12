@@ -42,5 +42,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
+        
+
     </StackLayout>
 </ContentPage>
