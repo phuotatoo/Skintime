@@ -27,14 +27,24 @@ namespace Skintime.Views
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
             BindingContext = new Diary();
+
+            //set min max date date picker
+            date.MinimumDate = new DateTime(2020, 1, 1);
+            date.MaximumDate = DateTime.Now;
+
+
+        }
+
+        async void Load_Clicked (object sender, EventArgs e)
+        {
             List<string> dispchooselist = new List<string>();
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
             foreach (InventoryCosmetics a in chooselist)
             {
-                picker.Items.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.added.name));
+                picker.Items.Add(a.added.name);
             }
-            picker.ItemsSource = dispchooselist;
+            //picker.ItemsSource = dispchooselist;
         }
 
         async void LoadDiary(string itemId)
@@ -48,12 +58,18 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
-               
+                itemid = itemId;
+                
             }
             catch (Exception)
             {
                 Console.WriteLine("Failed to load diary.");
             }
+        }
+        string itemid;
+        async void OnDateSelected(object sender, DateChangedEventArgs args)
+        {
+            
         }
 
         public void ChangeColor(object sender, bool state)
@@ -70,16 +86,7 @@ namespace Skintime.Views
             }
         }
 
-        void Time_Changed(object sender, EventArgs e)
-        {
-            /*var diary = (Diary)BindingContext;
-            chosentime = diary.Time;*/
-        }
-        void Date_Changed(object sender, EventArgs e)
-        {
-            /*var diary = (Diary)BindingContext;
-            chosendate = diary.Date;*/
-        }
+        
         void OnNormalButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
@@ -95,7 +102,6 @@ namespace Skintime.Views
             ChangeColor(sender, note.Acne);
             BindingContext = note;
         }
-
 
         void OnEczemaButtonClicked(object sender, EventArgs e)
         {

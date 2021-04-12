@@ -45,7 +45,7 @@
 
 
                     <!-- Date description-->
-                    <Label Text="{Binding Date}"
+                    <Label Text="{Binding Date, StringFormat='{}{0:dddd, dd MMMM yyyy}'}"
                            TextColor="#535257" 
                            FontAttributes="Bold"                                
                            Grid.Row="0"

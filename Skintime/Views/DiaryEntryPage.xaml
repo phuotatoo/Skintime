@@ -13,15 +13,17 @@
     
     <!-- Layout children vertically -->
     <StackLayout Margin="{StaticResource PageMargin}">
+        <Button
+            Text="Load"
+            Clicked="Load_Clicked"/>
         <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
-                    Date="{Binding Date}"
-                    PropertyChanged="Date_Changed"
+                    DateSelected="OnDateSelected"
+             
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="time"
                     Time="{Binding Time}"
-                    PropertyChanged="Time_Changed"
             />
         
         <Picker x:Name="picker" 
