@@ -14,6 +14,7 @@ namespace Skintime
     {
         static DiaryDatabase database;
         static KeyDatabase keydatabase;
+        static InventoryDatabase inventorydatabase;
 
         public static DiaryDatabase Database
         {
@@ -35,6 +36,18 @@ namespace Skintime
                     keydatabase = new KeyDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tmpkey1.db3"));
                 }
                 return keydatabase;
+            }
+        }
+
+        public static InventoryDatabase Inventorydatabase
+        {
+            get
+            {
+                if (inventorydatabase == null)
+                {
+                    inventorydatabase = new InventoryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "inventory.db3"));
+                }
+                return inventorydatabase;
             }
         }
         public App()

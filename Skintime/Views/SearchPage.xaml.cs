@@ -44,9 +44,10 @@ namespace Skintime.Views
                 return c.brand.ToLower().Contains(text1.ToLower());
             });
             List<Cosmetics> a = SearchResult1.ToList();
+            List<Cosmetics> a2 = SearchResult2.ToList();
             //Đây là nơi các bạn thêm tìm kiếm theo brand nếu cần
             //              (viết sẵn ngay dưới)
-            //a.Union(SearchResult2.ToList());
+            a = a.Union(a2).ToList();
             Coll.ItemsSource = a;
         }
 
