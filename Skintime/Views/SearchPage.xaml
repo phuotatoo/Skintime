@@ -35,8 +35,7 @@
                                    FontSize="Small" />
                             <Label Text="{Binding name}"
                                    TextColor="#39603D"
-                                   FontSize="Medium"
-                                   FontAttributes="Bold"/>
+                                   FontSize="Medium" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
