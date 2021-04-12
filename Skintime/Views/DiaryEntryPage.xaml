@@ -27,11 +27,8 @@
             />
         
         <Picker x:Name="picker" 
-                Title="Choose your product"
-                FontSize="13"
-                TextColor="Black"
                 
-                ItemDisplayBinding="{Binding name}"
+                
             />
 
         <StackLayout Orientation="Horizontal">

@@ -4,13 +4,14 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace Skintime.Models
 {
     public class KetQua
     {
-
-        [JsonProperty("DS_KetQua")]
-        public Cosmetics cosmetics { get; set; }
+        [PrimaryKey,AutoIncrement]
+        public int ID { get; set; }
+        public string key { get; set; }
     }
 }

@@ -32,19 +32,51 @@ namespace Skintime.Views
             date.MinimumDate = new DateTime(2020, 1, 1);
             date.MaximumDate = DateTime.Now;
 
+            
+        }
 
+        protected override async void OnAppearing()
+        {
+            /*List<Cosmetics> res = new List<Cosmetics>();
+            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
+            foreach (KetQua tmp in getres)
+            {
+                Cosmetics push = new Cosmetics();
+                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
+                picker.Items.Add(push.name);
+            }*/
+            
         }
 
         async void Load_Clicked (object sender, EventArgs e)
         {
-            List<string> dispchooselist = new List<string>();
+            /*if (picker.Items.Count == 0)
+            {
+                //List<string> dispchooselist = new List<string>();
+                List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+                BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+                picker.Title = chooselist.Count.ToString();
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    picker.Items.Add(a.added.name);
+                }
+                //picker.ItemsSource = dispchooselist;
+            }*/
+            picker = new Picker();
+            picker.FontSize = 13;
+            picker.TextColor = Color.Black;
+            picker.Title = "Choose your product";
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
-            foreach (InventoryCosmetics a in chooselist)
+            //picker.Title = chooselist.Count.ToString();
+            if (chooselist.Count != 0)
             {
-                picker.Items.Add(a.added.name);
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    picker.Items.Add("Hi");
+                }
             }
-            //picker.ItemsSource = dispchooselist;
+            else picker.Title = "Nothing here";
         }
 
         async void LoadDiary(string itemId)
@@ -58,8 +90,10 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
+                picker.SelectedItem = note.Product;
                 itemid = itemId;
                 
+
             }
             catch (Exception)
             {
@@ -119,7 +153,7 @@ namespace Skintime.Views
             note.Date = date.Date;
             note.Time = time.Time;
             note.Date.Add(note.Time);
-
+            note.Product = picker.SelectedItem.ToString();
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
