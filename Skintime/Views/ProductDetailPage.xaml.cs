@@ -23,6 +23,7 @@ namespace Skintime.Views
             if (check == "inventory") AddButton.IsVisible = false;
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
+            //Xem o WelcomePage
         }
 
         private async void Add_Clicked(object sender, EventArgs e)

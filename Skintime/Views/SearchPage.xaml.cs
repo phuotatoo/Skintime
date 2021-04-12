@@ -18,9 +18,10 @@ namespace Skintime.Views
             
             InitializeComponent();
             BlobCache.ApplicationName = "Skintime";
-            Registrations.Start("Skintime");
+            //Registrations.Start("Skintime");
             BlobCache.EnsureInitialized();
             BlobCache.Secure.GetAllObjects<Cosmetics>().Subscribe(x => mycosmetics = x.ToList());
+            //Hàm GetAllObjects trả giá trị IEnumerable nên phải chuyển về dạng list mới gắn cho List được
             Coll.ItemsSource = mycosmetics;
             //Search.Text = mycosmetics.Count.ToString();
         }
@@ -43,8 +44,9 @@ namespace Skintime.Views
                 return c.brand.ToLower().Contains(text1.ToLower());
             });
             List<Cosmetics> a = SearchResult1.ToList();
-            //List<Cosmetics> res = new List<Cosmetics>();
-            //Search.Text = MyList.Count.ToString();
+            //Đây là nơi các bạn thêm tìm kiếm theo brand nếu cần
+            //              (viết sẵn ngay dưới)
+            //a.Union(SearchResult2.ToList());
             Coll.ItemsSource = a;
         }
 
