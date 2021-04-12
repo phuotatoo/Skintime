@@ -1,42 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skintime.Views.SearchPage">
+             x:Class="Skintime.Views.SearchPage"
+             BackgroundColor="LightGray" >
 
     <StackLayout>
-        <Frame BackgroundColor="Transparent" Padding="24" CornerRadius="0">
-        </Frame>
-        <SearchBar
+        <Frame HeightRequest="70" BackgroundColor="White">
+            <SearchBar
                x:Name ="Search"
                Placeholder="Search for product"
                CancelButtonColor="#414141"
                PlaceholderColor="#B4B4B4"
                TextColor="black"
-               TextTransform="Lowercase"
                VerticalTextAlignment="Center"
+               VerticalOptions="EndAndExpand"
                FontSize="Medium"
                TextChanged="Search_TextChange" />
+        </Frame>
         
         <CollectionView
                 x:Name="Coll"
                 SelectionMode="Single"
                 SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical"
-                               ItemSpacing="10" />
+                <LinearItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
             <!-- Define the appearance of each item in the list -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout>
-                        
-                        <Label Text="{Binding brand}"
-                           TextColor="Black"
-                           FontSize="Small" />
-                        <Label Text="{Binding name}"
-                           TextColor="Black"
-                           FontSize="Medium" />
-                    </StackLayout>
+                    <Frame BackgroundColor="White" BorderColor="LightGray">
+                        <StackLayout>
+                            <Label Text="{Binding brand}"
+                                   TextColor="#3C403D"
+                                   FontSize="Small" />
+                            <Label Text="{Binding name}"
+                                   TextColor="#39603D"
+                                   FontSize="Medium" />
+                        </StackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

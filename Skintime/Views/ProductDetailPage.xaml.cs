@@ -8,9 +8,6 @@ using System.Globalization;
 
 namespace Skintime.Views
 {
-    //[QueryProperty(nameof(product), nameof(product))]
-
-    //[Xamarin.Forms.RenderWith(typeof(Xamarin.Forms.Platform._NavigationPageRenderer))]
     
     public partial class ProductDetailPage : ContentPage
     {
