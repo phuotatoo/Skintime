@@ -36,8 +36,8 @@ namespace Skintime.Views
             await App.Inventorydatabase.SaveKeyAsync(tmp);
 
             //Navigate to InventoryPage
-            //await Shell.Current.GoToAsync("///Inven");
-            await 
+            await Shell.Current.GoToAsync("///Inven");
+             
         }
 
         async void Delete_Clicked(object sender, EventArgs e)
