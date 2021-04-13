@@ -29,9 +29,13 @@
                         <Button x:Name="AddButton"
                     Text="Add to inventory"
                     Clicked="Add_Clicked"/>
-                        <Label x:Name="Check"
+                    <Button x:Name="DeleteButton"
+                    Text="Delete from inventory"
+                    Clicked="Delete_Clicked"/>
+                    <Label x:Name="Check"
                    TextColor="Black"/>
-                        <ListView ItemsSource="{Binding ingredient_list}" />
+                        <ListView ItemsSource="{Binding ingredient_list}" 
+                                  SelectionMode="None"/>
                     </StackLayout>
                 </Frame>
                 </StackLayout>

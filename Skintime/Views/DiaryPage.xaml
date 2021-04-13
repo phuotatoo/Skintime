@@ -39,49 +39,42 @@
                     Margin="{StaticResource PageMargin}" >
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
-
-                    <!--Schedule timeline-->
-
-
+                <StackLayout>
                     <!-- Date description-->
-                    <Label Text="{Binding Date, StringFormat='{}{0:dddd, dd MMMM yyyy}'}"
+                    <Label Text="{Binding datetime, StringFormat='{0:dddd, dd MMMM yyyy hh:mm tt}'}"
                            TextColor="#535257" 
                            FontAttributes="Bold"                                
                            Grid.Row="0"
                            Grid.Column="0"/>
 
-                    <!-- Schedule time-->
-                    <Label Grid.Row="1" 
-                            Grid.Column="0" 
-                            Text="{Binding Time}"  
-                            TextColor="#bfc0c0" 
-                            FontAttributes="Bold" 
-                            VerticalOptions="Start"/>
-                    <!-- Vertical Line-->
-                    <BoxView Grid.Row="2" 
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
+                        <!-- Vertical Line-->
+                        <BoxView Grid.Row="0" 
                              Grid.Column="0" 
                              WidthRequest="4" 
                              Color="#39603D" 
                              HeightRequest="120" 
                                  />
-                    <!-- Card -->
-                    <Frame Grid.Row="2" 
+                        <!-- Card -->
+                        <Frame Grid.Row="0" 
                                Grid.RowSpan="2" 
                                Grid.Column="1" 
                                CornerRadius="25" 
                                HasShadow="False" 
                                >
-                        <StackLayout>
-                            <Label Text="{Binding Text}" 
+                            <StackLayout>
+                                <Label Text="{Binding Text}" 
                                        FontAttributes="Bold" 
                                        TextColor="#535257" 
                                        FontSize="18"/>
-
-                            <!-- Skin condition below-->
-                        </StackLayout>
-                    </Frame>
-                </Grid>
+                                <!-- Skin condition below-->
+                                
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                
+                    
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

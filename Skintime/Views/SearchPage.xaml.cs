@@ -24,8 +24,12 @@ namespace Skintime.Views
             //Hàm GetAllObjects trả giá trị IEnumerable nên phải chuyển về dạng list mới gắn cho List được
             Coll.ItemsSource = mycosmetics;
             //Search.Text = mycosmetics.Count.ToString();
+            
         }
-
+        protected override async void OnAppearing()
+        {
+            Coll.SelectedItem = null;
+        }
         //List<Key> MyList = new List<Key>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
 
@@ -44,10 +48,12 @@ namespace Skintime.Views
                 return c.brand.ToLower().Contains(text1.ToLower());
             });
             List<Cosmetics> a = SearchResult1.ToList();
+            List<Cosmetics> a2 = SearchResult2.ToList();
             //Đây là nơi các bạn thêm tìm kiếm theo brand nếu cần
             //              (viết sẵn ngay dưới)
-            //a.Union(SearchResult2.ToList());
+            a = a.Union(a2).ToList();
             Coll.ItemsSource = a;
+            //Coll.SelectedItem = null;
         }
 
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,12 +65,9 @@ namespace Skintime.Views
                 var DetailPage = new ProductDetailPage("search");
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
-                
             }
             
         }
-
-        
     }
 
 }

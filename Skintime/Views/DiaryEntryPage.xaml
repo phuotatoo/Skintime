@@ -18,7 +18,7 @@
             Clicked="Load_Clicked"/>
         <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
-                    DateSelected="OnDateSelected"
+                    Date="{Binding Date}"
              
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"
@@ -27,11 +27,9 @@
             />
         
         <Picker x:Name="picker" 
-                Title="Choose your product"
-                FontSize="13"
-                TextColor="Black"
                 
-                ItemDisplayBinding="{Binding name}"
+                
+                ItemDisplayBinding="{Binding Product}"
             />
 
         <StackLayout Orientation="Horizontal">
