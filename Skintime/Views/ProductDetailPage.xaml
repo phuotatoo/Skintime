@@ -6,6 +6,7 @@
     <ScrollView>
         <RelativeLayout>
             <Image Source="LeafBackground.png"
+                   
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill" />
