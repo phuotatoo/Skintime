@@ -15,17 +15,17 @@
                 <StackLayout BackgroundColor="Transparent">
                     <Frame BackgroundColor="Transparent" HeightRequest="100">
                         <StackLayout BackgroundColor="Transparent">
+                            <Label x:Name="productname"
+                               Text="{Binding name}"
+                               TextColor="White"
+                               FontSize="Title" />
                             <Label x:Name="productbrand"
-                           Text="{Binding brand}"
-                           TextColor="White"
-                           FontSize="Title" />
-                <Label x:Name="productname"
-                           Text="{Binding name}"
-                           TextColor="#DADED4"
-                           FontSize="Subtitle"/>
+                               Text="{Binding brand}"
+                               TextColor="#DADED4"
+                               FontSize="Subtitle"/>
                 </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="White" CornerRadius="10">
+                <Frame BackgroundColor="White" CornerRadius="20">
                     <StackLayout>
                         <Button x:Name="AddButton"
                     Text="Add to inventory"
@@ -34,7 +34,7 @@
                     Text="Delete from inventory"
                     Clicked="Delete_Clicked"/>
                     <Label x:Name="Check"
-                   TextColor="Black"/>
+                    TextColor="Black"/>
                         <ListView ItemsSource="{Binding ingredient_list}" 
                                   SelectionMode="None"/>
                     </StackLayout>

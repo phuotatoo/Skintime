@@ -60,7 +60,6 @@
                                Grid.RowSpan="1" 
                                Grid.Column="1" 
                                Grid.ColumnSpan="2"
-                               CornerRadius="25" 
                                HasShadow="False" 
                                >
                             <StackLayout>

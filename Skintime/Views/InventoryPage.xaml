@@ -4,9 +4,29 @@
              x:Class="Skintime.Views.InventoryPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button 
-                Text="Delete all"
-                Clicked="Delete_Clicked"/>
+            <FlexLayout Direction="Column"
+                        JustifyContent="SpaceEvenly"
+                        AlignItems="Center"
+                        Margin="0,20,10,10">
+
+                <FlexLayout.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="ImageSource">
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="iOS, Android" Value="DeleteSmall.png" />
+                                <On Platform="UWP" Value="Assets/DeleteSmall.png" />
+                            </OnPlatform>
+                        </Setter>
+                    </Style>
+                </FlexLayout.Resources>
+
+                <Button Text="Delete all products"
+                        Clicked="Delete_Clicked"
+                        WidthRequest = "370"
+                        HeightRequest = "50"
+                        CornerRadius="10"
+                        HorizontalOptions="Center"/>
+            </FlexLayout>
             <CollectionView
                 x:Name="Disp1Coll"
                 SelectionMode="Single"
