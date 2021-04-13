@@ -17,6 +17,8 @@
                     Clicked="OnSearchClicked" />
             <Button Text ="Click to Add Product"
                 Clicked="AddProduct_Clicked"/>
+            <Button Text ="Click to see Expiring Product"
+                Clicked="Expire_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

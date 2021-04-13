@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skintime.Views.ExpireCosmetics">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Text="Expiring now"
+                FontSize="Header"
+                TextColor="Black"/>
+            <CollectionView x:Name ="Collection"                        
+                    Grid.ColumnSpan="3"
+                    VerticalScrollBarVisibility="Never"
+                    VerticalOptions="Start"
+                    SelectionMode="None"
+                    Margin="{StaticResource PageMargin}" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
+
+                                <!-- Vertical Line-->
+                                <BoxView Grid.Row="0" 
+                             Grid.Column="0" 
+                             WidthRequest="4" 
+                             Color="#39603D" 
+                             HeightRequest="120" 
+                                 />
+                                <!-- Card -->
+                                <Frame Grid.Row="0" 
+                               Grid.RowSpan="1" 
+                               Grid.Column="1" 
+                               Grid.ColumnSpan="2"
+                               CornerRadius="25" 
+                               HasShadow="False" >
+                                    <StackLayout>
+                                        <Label Text="{Binding Product}" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#535257" 
+                                       FontSize="20"/>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

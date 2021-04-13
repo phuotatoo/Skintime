@@ -29,7 +29,7 @@ namespace Skintime.Views
 
             //set min max date date picker
             date.MinimumDate = new DateTime(2020, 1, 1);
-            date.MaximumDate = DateTime.Now;
+            date.MaximumDate = new DateTime(2021, 12, 31);
 
             
         }

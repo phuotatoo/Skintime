@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using Skintime.Models;
+using Skintime;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +27,12 @@ namespace Skintime.Views
         {
             var Addd = new AddCosmeticPage();
             await Navigation.PushAsync(Addd);
+        }
+
+        async void Expire_Clicked(object sender, EventArgs e)
+        {
+            var Expire = new ExpireCosmetics();
+            await Navigation.PushAsync(Expire);
         }
 
         static bool Add()
