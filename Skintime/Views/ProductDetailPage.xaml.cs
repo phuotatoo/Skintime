@@ -54,7 +54,8 @@ namespace Skintime.Views
             await App.Inventorydatabase.SaveKeyAsync(tmp);
 
             //Navigate to InventoryPage
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("///Inven");
+             
         }
     }
 }
