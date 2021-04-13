@@ -13,13 +13,10 @@ namespace Skintime.Views
     public partial class ProductDetailPage : ContentPage
     {
 
-        public ProductDetailPage(string check)
+        public ProductDetailPage()
         {
             InitializeComponent();
-            //Check.Text = BindingContext.GetType().ToString();
-            if (check == "inventory") AddButton.IsVisible = false;
-            else DeleteButton.IsVisible = false;
-            
+            //Check.Text = BindingContext.GetType().ToString()
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
             //Xem o WelcomePage
@@ -38,6 +35,20 @@ namespace Skintime.Views
             //BindingContext = check;//
         }
 
+        public async void Delete_Clicked(object sender, EventArgs e)
+        {
+            InventoryCosmetics add = new InventoryCosmetics();
+            add.added = (Cosmetics)BindingContext;
+            Cosmetics check = (Cosmetics)BindingContext;
+            if (check != null) AddButton.Text = "Khum Null";
+            else AddButton.Text = "Null";
+
+            KetQua tmp = new KetQua();
+            tmp.key = add.added.name;
+            await App.Inventorydatabase.SaveKeyAsync(tmp);
+
+            await Shell.Current.GoToAsync("///Inven");
+        }
         private async void Add_Clicked(object sender, EventArgs e)
         {
             //Add cosmetics to database
@@ -46,14 +57,12 @@ namespace Skintime.Views
             Cosmetics check = (Cosmetics)BindingContext;
             if (check != null) AddButton.Text = "Khum Null";
             else AddButton.Text = "Null";
-            //BlobCache.Secure.InsertObject<InventoryCosmetics>(add.added.name, add);
-            //BlobCache.Secure.Flush();
 
             KetQua tmp = new KetQua();
             tmp.key = add.added.name;
             await App.Inventorydatabase.SaveKeyAsync(tmp);
+            await BlobCache.Secure.InsertObject(add.added.name, add);
 
-            //Navigate to InventoryPage
             await Shell.Current.GoToAsync("///Inven");
              
         }

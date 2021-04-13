@@ -61,8 +61,7 @@ namespace Skintime.Views
             if (e.CurrentSelection != null)
             {
                 var cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
-
-                var DetailPage = new ProductDetailPage("search");
+                var DetailPage = new ProductDetailPage();
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
             }
