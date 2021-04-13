@@ -33,7 +33,7 @@ namespace Skintime.Views
             push.ingredient_list = new List<String>();
             push.ingredient_list = tmp.list.Split(' ').ToList();
             var check = await BlobCache.Secure.InsertObject(push.name, push);
-            BlobCache.Secure.Flush();
+            //BlobCache.Secure.Flush();
             await Shell.Current.GoToAsync("..");
         }
     }
