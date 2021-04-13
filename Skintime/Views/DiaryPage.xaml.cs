@@ -32,7 +32,7 @@ namespace Skintime.Views
             // data source for the CollectionView.
             List<Diary> sorted = await App.Database.GetDiaryAsync();
             //sorted.Sort((x, y) =>cmp(x.Date,y.Date));
-            sorted.Sort((x, y) => DateTime.Compare(y.Date,x.Date));
+            sorted.Sort((x, y) => DateTime.Compare(y.datetime,x.datetime));
             collectionView.ItemsSource = sorted;
         }
 

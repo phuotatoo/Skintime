@@ -24,6 +24,7 @@ namespace Skintime.Views
         async void Save_Clicked(object sender, EventArgs e)
         {
             UserAddCosmetics tmp= new UserAddCosmetics();
+
             tmp = (UserAddCosmetics)BindingContext;
             Cosmetics push = new Cosmetics();
             push.id = "test";

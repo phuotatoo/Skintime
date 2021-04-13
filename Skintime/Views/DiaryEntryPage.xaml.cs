@@ -33,77 +33,17 @@ namespace Skintime.Views
 
             
         }
-
+        List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
         protected override async void OnAppearing()
         {
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
-            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-            List<Cosmetics> disp1 = new List<Cosmetics>();
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
-            //BlobCache.Secure.Dispose();
-            //picker.Title = chooselist.Count.ToString();
-            if (picker.Items.Count==0)
-            {
-                var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
-                chooselist = list.ToList();
-                foreach (InventoryCosmetics a in chooselist)
-                {
-                    disp1.Add(a.added);
-                }
-                foreach (Cosmetics a in disp1)
-                {
-                    picker.Items.Add(a.name);
-                }
-            }
-            //else picker.Title = "Nothing here";
-            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
-            foreach (KetQua tmp in getres)
-            {
-                Cosmetics push = new Cosmetics();
-                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
-                //picker.Items.Add((string)push.name);
-            }
+            Diary note = (Diary)BindingContext;
+            picker.SelectedItem = note.Product;
             picker.FontSize = 13;
             picker.TextColor = Color.Black;
             picker.Title = "Choose your item";
-        }
 
-        async void Load_Clicked(object sender, EventArgs e)
-        {
-            //BlobCache.ApplicationName = "Skintime";
-            //BlobCache.EnsureInitialized();
-            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-            List<Cosmetics> disp1 = new List<Cosmetics>();
-            var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
-            //BlobCache.Secure.Dispose();
-            //picker.Title = chooselist.Count.ToString();
-            chooselist = list.ToList();
-            if (picker.Items.Count == 0)
-            {
-                //var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
-                chooselist = list.ToList();
-                foreach (InventoryCosmetics a in chooselist)
-                {
-                    disp1.Add(a.added);
-                }
-                foreach (Cosmetics a in disp1)
-                {
-                    picker.Items.Add(a.name);
-                }
-            }
-            //else picker.Title = "Nothing here";
-            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
-            foreach (KetQua tmp in getres)
-            {
-                Cosmetics push = new Cosmetics();
-                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
-                //picker.Items.Add((string)push.name);
-            }
-            picker.FontSize = 13;
-            picker.TextColor = Color.Black;
-            picker.Title = "Choose your item";
         }
 
         async void LoadDiary(string itemId)
@@ -111,25 +51,27 @@ namespace Skintime.Views
             try
             {
                 int id = Convert.ToInt32(itemId);
-                // Retrieve the note and set it as the BindingContext of the page.
                 Diary note = await App.Database.GetDiaryAsync(id);
                 BindingContext = note;
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
+                if (picker.Items.Count == 0)
+                {
+                    var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                    chooselist = list.ToList();
+                    foreach (InventoryCosmetics a in chooselist)
+                    {
+                        picker.Items.Add(a.added.name);
+                    }
+                }
                 picker.SelectedItem = note.Product;
-                itemid = itemId;
-                
+                //normal.Text = note.Product;
             }
             catch (Exception)
             {
                 Console.WriteLine("Failed to load diary.");
             }
-        }
-        string itemid;
-        async void OnDateSelected(object sender, DateChangedEventArgs args)
-        {
-            
         }
 
         public void ChangeColor(object sender, bool state)
@@ -144,15 +86,14 @@ namespace Skintime.Views
                 (sender as Button).BackgroundColor = Color.Khaki;
                 (sender as Button).TextColor = Color.Black;
             }
-        }
-
-        
+        } 
         void OnNormalButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
             note.Normal = !note.Normal;
             ChangeColor(sender, note.Normal);
             BindingContext = note;
+            normal.Text = picker.SelectedItem.ToString();
         }
 
         void OnAcneButtonClicked(object sender, EventArgs e)
@@ -171,35 +112,20 @@ namespace Skintime.Views
             BindingContext = note;
         }
 
-
-
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
-            note.Date = date.Date;
-            note.Time = time.Time;
-            note.Date.Add(note.Time);
+            DateTime temp = date.Date + time.Time;
+            note.datetime = temp;
             note.Product = picker.SelectedItem.ToString();
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
-
-                /*
-                Events = new EventCollection()
-                {
-                    [new DateTime(2020, 3, 16)] = new List<Diary>
-                    {
-                        
-                    }
-                }
-                */
             }
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
         }
-
-        
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {

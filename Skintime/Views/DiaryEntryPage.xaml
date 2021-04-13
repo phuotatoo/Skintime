@@ -13,22 +13,18 @@
     
     <!-- Layout children vertically -->
     <StackLayout Margin="{StaticResource PageMargin}">
-        <Button
-            Text="Load"
-            Clicked="Load_Clicked"/>
         <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
-                    DateSelected="OnDateSelected"
-             
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="time"
-                    Time="{Binding Time}"
             />
         
         <Picker x:Name="picker" 
-                
-                
+                Title="Choose your item"
+                FontSize="Caption"
+                TextColor="{StaticResource SecondaryColor}"
+            
             />
 
         <StackLayout Orientation="Horizontal">
