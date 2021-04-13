@@ -10,7 +10,7 @@ namespace Skintime.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public DateTime datetime { get; set; }
-        //public TimeSpan Time { get; set; }
+        public TimeSpan Time { get; set; }
         public string Product { get; set; }
         public bool Normal { get; set; }
         public bool Acne { get; set; }

@@ -38,12 +38,16 @@ namespace Skintime.Views
         {
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
-            Diary note = (Diary)BindingContext;
-            picker.SelectedItem = note.Product;
-            picker.FontSize = 13;
-            picker.TextColor = Color.Black;
-            picker.Title = "Choose your item";
-
+            //Diary note = (Diary)BindingContext;
+            if (picker.Items.Count == 0)
+            {
+                var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                chooselist = list.ToList();
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    picker.Items.Add(a.added.name);
+                }
+            }
         }
 
         async void LoadDiary(string itemId)
@@ -56,15 +60,6 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
-                if (picker.Items.Count == 0)
-                {
-                    var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
-                    chooselist = list.ToList();
-                    foreach (InventoryCosmetics a in chooselist)
-                    {
-                        picker.Items.Add(a.added.name);
-                    }
-                }
                 picker.SelectedItem = note.Product;
                 //normal.Text = note.Product;
             }
@@ -93,7 +88,7 @@ namespace Skintime.Views
             note.Normal = !note.Normal;
             ChangeColor(sender, note.Normal);
             BindingContext = note;
-            normal.Text = picker.SelectedItem.ToString();
+            //normal.Text = picker.SelectedItem.ToString();
         }
 
         void OnAcneButtonClicked(object sender, EventArgs e)
@@ -118,11 +113,10 @@ namespace Skintime.Views
             DateTime temp = date.Date + time.Time;
             note.datetime = temp;
             note.Product = picker.SelectedItem.ToString();
-            if (!string.IsNullOrWhiteSpace(note.Text))
+            if (!string.IsNullOrWhiteSpace(note.Text) && picker.SelectedItem!=null)
             {
                 await App.Database.SaveDiaryAsync(note);
             }
-
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
         }

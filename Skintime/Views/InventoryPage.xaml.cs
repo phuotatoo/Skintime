@@ -26,16 +26,15 @@ namespace Skintime.Views
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
             disp1 = new List<Cosmetics>();
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => invent1 = X.ToList());
+            var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
             List<KetQua> res = await App.Inventorydatabase.GetKeyAsync();
             //Get objects from memory
+            invent1 = list.ToList();
+            //dzo call ei
             foreach (InventoryCosmetics a in invent1)
             {
                 disp1.Add(a.added);
-                //string key = ketqua.key;
-                //Cosmetics Add_to = new Cosmetics();
-                //BlobCache.Secure.GetObject<Cosmetics>(key).Subscribe(X=>Add_to = X);
-                //disp1.Add(Add_to);
+                
             }
             Disp1Coll.ItemsSource = disp1;
             //BlobCache.Secure.InvalidateObject<InventoryCosmetics>("push");

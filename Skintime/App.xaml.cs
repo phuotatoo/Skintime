@@ -22,7 +22,7 @@ namespace Skintime
             {
                 if (database == null)
                 {
-                    database = new DiaryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Skintime.db3"));
+                    database = new DiaryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Skintime2.db3"));
                 }
                 return database;
             }

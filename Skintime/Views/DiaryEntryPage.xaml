@@ -15,9 +15,11 @@
     <StackLayout Margin="{StaticResource PageMargin}">
         <DatePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="date"
+                    Date="{Binding datetime}"
             />
         <TimePicker TextColor="{StaticResource SecondaryColor}"
                     x:Name="time"
+                    Time="{Binding Time}"
             />
         
         <Picker x:Name="picker" 
