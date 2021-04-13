@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
-                Text="Delete"
+                Text="Delete all"
                 Clicked="Delete_Clicked"/>
             <CollectionView
                 x:Name="Disp1Coll"

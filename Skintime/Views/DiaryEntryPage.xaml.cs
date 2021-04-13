@@ -37,9 +37,9 @@ namespace Skintime.Views
 
         async void Load_Clicked (object sender, EventArgs e)
         {
-            List<string> dispchooselist = new List<string>();
+            //List<string> dispchooselist = new List<string>();
+            //var dispchooselist = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
             foreach (InventoryCosmetics a in chooselist)
             {
                 picker.Items.Add(a.added.name);
@@ -55,6 +55,7 @@ namespace Skintime.Views
                 // Retrieve the note and set it as the BindingContext of the page.
                 Diary note = await App.Database.GetDiaryAsync(id);
                 BindingContext = note;
+                
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);

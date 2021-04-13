@@ -31,7 +31,7 @@
                 FontSize="13"
                 TextColor="Black"
                 
-                ItemDisplayBinding="{Binding name}"
+                ItemDisplayBinding="{Binding Product}"
             />
 
         <StackLayout Orientation="Horizontal">

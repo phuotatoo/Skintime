@@ -23,7 +23,7 @@ namespace Skintime.Views
         List<InventoryCosmetics> invent1 = new List<InventoryCosmetics>(); //Init disp1
         //Tạo InventoryCosmetics để tránh conflict với Cosmetics có sẵn trong database 
         //do Akavache lưu dưới dạng key-value nên mỗi Cosmetics với 1 cặp key-value là unique
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             disp1 = new List<Cosmetics>();
@@ -31,7 +31,8 @@ namespace Skintime.Views
             tmp.added = new Cosmetics();
             tmp.added.name = "push";
             BlobCache.Secure.InsertObject<InventoryCosmetics>("push", tmp);
-            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => invent1 = X.ToList());
+            var pull = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+            invent1 = pull.ToList();
             //Get objects from memory
             foreach (InventoryCosmetics a in invent1)
             {

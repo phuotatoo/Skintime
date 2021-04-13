@@ -8,6 +8,9 @@
             <Button x:Name="AddButton"
                     Text="Add to inventory"
                     Clicked="Add_Clicked"/>
+            <Button x:Name="DeleteButton"
+                    Text="Delete from inventory"
+                    Clicked="Delete_Clicked"/>
             <Label x:Name="Check"
                    TextColor="Black"/>
             <Label x:Name="productbrand"
