@@ -1,7 +1,9 @@
-﻿using Skintime.Models;
-using SQLite;
+﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SQLite;
+using Skintime.Models;
 
 namespace Skintime.Data
 {
@@ -47,6 +49,6 @@ namespace Skintime.Data
             // Delete a note.
             return database.DeleteAsync(note);
         }
-
+    
     }
 }

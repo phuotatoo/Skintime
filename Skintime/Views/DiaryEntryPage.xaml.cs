@@ -1,10 +1,11 @@
-﻿using Akavache;
-using Skintime.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
+using Akavache;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.Reactive.Linq;
+using Skintime.Models;
 
 namespace Skintime.Views
 {
@@ -23,14 +24,14 @@ namespace Skintime.Views
         {
             InitializeComponent();
             // Set the BindingContext of the page to a new Diary.
-
+            
             BindingContext = new Diary();
 
             //set min max date date picker
             date.MinimumDate = new DateTime(2020, 1, 1);
             date.MaximumDate = DateTime.Now;
 
-
+            
         }
 
         protected override async void OnAppearing()
@@ -42,7 +43,7 @@ namespace Skintime.Views
             BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
             //BlobCache.Secure.Dispose();
             //picker.Title = chooselist.Count.ToString();
-            if (picker.Items.Count == 0)
+            if (picker.Items.Count==0)
             {
                 var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
                 chooselist = list.ToList();
@@ -113,13 +114,13 @@ namespace Skintime.Views
                 // Retrieve the note and set it as the BindingContext of the page.
                 Diary note = await App.Database.GetDiaryAsync(id);
                 BindingContext = note;
-
+                
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
                 picker.SelectedItem = note.Product;
                 itemid = itemId;
-
+                
             }
             catch (Exception)
             {
@@ -127,7 +128,7 @@ namespace Skintime.Views
             }
         }
         string itemid;
-
+        
 
         public void ChangeColor(object sender, bool state)
         {
@@ -143,7 +144,7 @@ namespace Skintime.Views
             }
         }
 
-
+        
         void OnNormalButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
@@ -180,7 +181,7 @@ namespace Skintime.Views
 
             note.datetime = temp;
 
-
+            
             note.Product = picker.SelectedItem.ToString();
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
@@ -192,7 +193,7 @@ namespace Skintime.Views
             await Shell.Current.GoToAsync("..");
         }
 
-
+        
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {

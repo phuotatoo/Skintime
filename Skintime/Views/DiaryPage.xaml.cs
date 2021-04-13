@@ -1,8 +1,8 @@
-﻿using Skintime.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using Skintime.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Skintime.Views
 {
@@ -13,7 +13,7 @@ namespace Skintime.Views
         {
             InitializeComponent();
         }
-
+        
         /*
         public int cmp(DateTime a,DateTime b)
         {
@@ -33,7 +33,7 @@ namespace Skintime.Views
             // data source for the CollectionView.
             List<Diary> sorted = await App.Database.GetDiaryAsync();
             //sorted.Sort((x, y) =>cmp(x.Date,y.Date));
-            sorted.Sort((x, y) => DateTime.Compare(y.datetime, x.datetime));
+            sorted.Sort((x, y) => DateTime.Compare(y.datetime,x.datetime));
             collectionView.ItemsSource = sorted;
         }
 

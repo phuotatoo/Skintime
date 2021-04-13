@@ -1,4 +1,8 @@
-﻿namespace Skintime.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Skintime.Models
 {
     public class InventoryCosmetics
     {

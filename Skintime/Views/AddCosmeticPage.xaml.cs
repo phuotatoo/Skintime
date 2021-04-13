@@ -1,9 +1,11 @@
-﻿using Akavache;
-using Skintime.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Akavache;
+using Skintime.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,7 +24,7 @@ namespace Skintime.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            UserAddCosmetics tmp = new UserAddCosmetics();
+            UserAddCosmetics tmp= new UserAddCosmetics();
             tmp = (UserAddCosmetics)BindingContext;
             Cosmetics push = new Cosmetics();
             push.id = "test";
@@ -31,7 +33,7 @@ namespace Skintime.Views
             push.ingredient_list = new List<String>();
             push.ingredient_list = tmp.list.Split(' ').ToList();
             var check = await BlobCache.Secure.InsertObject(push.name, push);
-            await BlobCache.Secure.Flush();
+            BlobCache.Secure.Flush();
             await Shell.Current.GoToAsync("..");
         }
     }

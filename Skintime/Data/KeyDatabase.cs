@@ -1,7 +1,9 @@
-﻿using Skintime.Models;
-using SQLite;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using SQLite;
 using System.Threading.Tasks;
+using Skintime.Models;
 
 namespace Skintime.Data
 {
@@ -14,7 +16,7 @@ namespace Skintime.Data
             database.CreateTableAsync<Key>().Wait();
         }
 
-        public Task<List<Key>> GetKeyAsync()
+        public Task<List<Key>>GetKeyAsync()
         {
             //Get all notes.
             return database.Table<Key>().ToListAsync();
@@ -30,7 +32,7 @@ namespace Skintime.Data
 
         public Task<int> SaveKeyAsync(Key note)
         {
-            return database.InsertAsync(note);
+                return database.InsertAsync(note);
         }
     }
 }

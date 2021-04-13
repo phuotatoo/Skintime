@@ -1,21 +1,23 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Skintime.Views;
 using Xamarin.Forms;
 
 namespace Skintime.Models
 {
     public class ItemSearchHandlerClass : SearchHandler
     {
-
+        
         public Type SelectedItemNavigationTarget { get; set; }
 
         public class KetQua
         {
             [JsonProperty("DS_KetQua")]
             public Cosmetics cosmetics { get; set; }
-
+           
         }
 
         public static string DoiString(string x)

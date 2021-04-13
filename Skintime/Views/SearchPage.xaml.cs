@@ -1,10 +1,12 @@
-﻿using Akavache;
-using Skintime.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Skintime.Models;
+using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace Skintime.Views
 {
@@ -13,6 +15,7 @@ namespace Skintime.Views
     {
         public SearchPage()
         {
+            
             InitializeComponent();
             BlobCache.ApplicationName = "Skintime";
             //Registrations.Start("Skintime");
@@ -20,15 +23,20 @@ namespace Skintime.Views
             BlobCache.Secure.GetAllObjects<Cosmetics>().Subscribe(x => mycosmetics = x.ToList());
             //Hàm GetAllObjects trả giá trị IEnumerable nên phải chuyển về dạng list mới gắn cho List được
             Coll.ItemsSource = mycosmetics;
+            //Search.Text = mycosmetics.Count.ToString();
+            
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             Coll.SelectedItem = null;
         }
+        //List<Key> MyList = new List<Key>();
         List<Cosmetics> mycosmetics = new List<Cosmetics>();
 
         private void Search_TextChange(object sender, TextChangedEventArgs e)
         {
+            //Search.Text = mycosmetics.Count.ToString();
+            //MyList = await App.Keydatabase.GetKeyAsync();
             var SearchResult1 = mycosmetics.Where(c =>
             {
                 string text1 = Search.Text;
@@ -41,8 +49,11 @@ namespace Skintime.Views
             });
             List<Cosmetics> a = SearchResult1.ToList();
             List<Cosmetics> a2 = SearchResult2.ToList();
+            //Đây là nơi các bạn thêm tìm kiếm theo brand nếu cần
+            //              (viết sẵn ngay dưới)
             a = a.Union(a2).ToList();
             Coll.ItemsSource = a;
+            //Coll.SelectedItem = null;
         }
 
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,11 +62,11 @@ namespace Skintime.Views
             {
                 var cosmetics = (Cosmetics)e.CurrentSelection.FirstOrDefault();
 
-                var DetailPage = new ProductDetailPage();
+                var DetailPage = new ProductDetailPage("search");
                 DetailPage.BindingContext = cosmetics;
                 await Navigation.PushAsync(DetailPage);
             }
-
+            
         }
     }
 
