@@ -27,11 +27,12 @@
                       Icon="home.png"
                       ContentTemplate="{DataTemplate views:HomePage}" />
         <ShellContent Title="Diary"
-                      Icon=""
+                      Icon="calendar.png"
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
                       
         <ShellContent Title="My Cosmetic"
                       Icon="cream.png"
-                      ContentTemplate="{DataTemplate views:InventoryPage}" />
+                      ContentTemplate="{DataTemplate views:InventoryPage}" 
+                      Route="Inven"/>
     </TabBar>
 </Shell>

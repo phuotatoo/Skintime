@@ -13,7 +13,6 @@ namespace Skintime.Views
     public partial class ProductDetailPage : ContentPage
     {
         
-        
         public ProductDetailPage(string check)
         {
             InitializeComponent();
@@ -50,20 +49,14 @@ namespace Skintime.Views
             //BlobCache.Secure.InsertObject<InventoryCosmetics>(add.added.name, add);
             //BlobCache.Secure.Flush();
 
-            //Navigate to InventoryPage
-            //await Shell.Current.GoToAsync("..");
-            await Shell.Current.GoToAsync("//Inven");
-        }
-
-        private async void Delete_Clicked(object sender, EventArgs e)
-        {
-            //Add cosmetics to database
-            InventoryCosmetics add = new InventoryCosmetics();
-            add.added = (Cosmetics)BindingContext;
-            BlobCache.Secure.InvalidateObject<InventoryCosmetics>(add.added.name);
+            KetQua tmp = new KetQua();
+            tmp.key = add.added.name;
+            await App.Inventorydatabase.SaveKeyAsync(tmp);
 
             //Navigate to InventoryPage
             await Shell.Current.GoToAsync("..");
         }
+
+     
     }
 }

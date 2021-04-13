@@ -1,11 +1,11 @@
 ﻿using System;
-using Xamarin.Forms;
-using Skintime.Models;
-using System.Reactive.Linq;
-using Akavache;
 using System.Collections.Generic;
 using System.Linq;
-using System.Globalization;
+using Akavache;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.Reactive.Linq;
+using Skintime.Models;
 
 namespace Skintime.Views
 {
@@ -24,27 +24,86 @@ namespace Skintime.Views
         {
             InitializeComponent();
             // Set the BindingContext of the page to a new Diary.
-            BlobCache.ApplicationName = "Skintime";
-            BlobCache.EnsureInitialized();
+            
             BindingContext = new Diary();
 
             //set min max date date picker
             date.MinimumDate = new DateTime(2020, 1, 1);
             date.MaximumDate = DateTime.Now;
 
-
+            
         }
 
-        async void Load_Clicked (object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            //List<string> dispchooselist = new List<string>();
-            //var dispchooselist = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            BlobCache.ApplicationName = "Skintime";
+            BlobCache.EnsureInitialized();
             List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
-            foreach (InventoryCosmetics a in chooselist)
+            List<Cosmetics> disp1 = new List<Cosmetics>();
+            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            //BlobCache.Secure.Dispose();
+            //picker.Title = chooselist.Count.ToString();
+            if (picker.Items.Count==0)
             {
-                picker.Items.Add(a.added.name);
+                var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                chooselist = list.ToList();
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    disp1.Add(a.added);
+                }
+                foreach (Cosmetics a in disp1)
+                {
+                    picker.Items.Add(a.name);
+                }
             }
-            //picker.ItemsSource = dispchooselist;
+            //else picker.Title = "Nothing here";
+            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
+            foreach (KetQua tmp in getres)
+            {
+                Cosmetics push = new Cosmetics();
+                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
+                //picker.Items.Add((string)push.name);
+            }
+            picker.FontSize = 13;
+            picker.TextColor = Color.Black;
+            picker.Title = "Choose your item";
+        }
+
+        async void Load_Clicked(object sender, EventArgs e)
+        {
+            //BlobCache.ApplicationName = "Skintime";
+            //BlobCache.EnsureInitialized();
+            List<InventoryCosmetics> chooselist = new List<InventoryCosmetics>();
+            List<Cosmetics> disp1 = new List<Cosmetics>();
+            var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+            BlobCache.Secure.GetAllObjects<InventoryCosmetics>().Subscribe(X => chooselist = X.ToList());
+            //BlobCache.Secure.Dispose();
+            //picker.Title = chooselist.Count.ToString();
+            chooselist = list.ToList();
+            if (picker.Items.Count == 0)
+            {
+                //var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                chooselist = list.ToList();
+                foreach (InventoryCosmetics a in chooselist)
+                {
+                    disp1.Add(a.added);
+                }
+                foreach (Cosmetics a in disp1)
+                {
+                    picker.Items.Add(a.name);
+                }
+            }
+            //else picker.Title = "Nothing here";
+            List<KetQua> getres = await App.Inventorydatabase.GetKeyAsync();
+            foreach (KetQua tmp in getres)
+            {
+                Cosmetics push = new Cosmetics();
+                BlobCache.Secure.GetObject<Cosmetics>(tmp.key).Subscribe(X => push = X);
+                //picker.Items.Add((string)push.name);
+            }
+            picker.FontSize = 13;
+            picker.TextColor = Color.Black;
+            picker.Title = "Choose your item";
         }
 
         async void LoadDiary(string itemId)
@@ -59,6 +118,7 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
+                picker.SelectedItem = note.Product;
                 itemid = itemId;
                 
             }
@@ -68,10 +128,7 @@ namespace Skintime.Views
             }
         }
         string itemid;
-        async void OnDateSelected(object sender, DateChangedEventArgs args)
-        {
-            
-        }
+        
 
         public void ChangeColor(object sender, bool state)
         {
@@ -117,24 +174,20 @@ namespace Skintime.Views
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Diary)BindingContext;
-            note.Date = date.Date;
-            note.Time = time.Time;
-            note.Date.Add(note.Time);
 
+            DateTime temp = date.Date + time.Time;
+            //note.datetime = date.Date;
+            //note.datetime.Add(time.Time);
+
+            note.datetime = temp;
+
+            
+            note.Product = picker.SelectedItem.ToString();
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
-
-                /*
-                Events = new EventCollection()
-                {
-                    [new DateTime(2020, 3, 16)] = new List<Diary>
-                    {
-                        
-                    }
-                }
-                */
             }
+
 
             // Navigate backwards
             await Shell.Current.GoToAsync("..");
