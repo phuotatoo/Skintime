@@ -19,20 +19,17 @@ namespace Skintime.Views
             //Check.Text = BindingContext.GetType().ToString()
             BlobCache.ApplicationName = "Skintime";
             BlobCache.EnsureInitialized();
-            //Xem o WelcomePage
         }
 
         protected override async void OnAppearing()
         {
             Cosmetics tmp = (Cosmetics)BindingContext;
-            if (tmp == null) AddButton.Text = "Null";
-            else AddButton.Text = "Khum Null";
             string okela = tmp.name;
             var pullcheck = await BlobCache.Secure.GetObject<InventoryCosmetics>(okela);
             InventoryCosmetics tmp1 = (InventoryCosmetics)pullcheck;
             Cosmetics check = tmp1.added;
             if (check != null) AddButton.IsVisible = false;
-            //BindingContext = check;//
+            else DeleteButton.IsVisible = false;
         }
 
         public async void Delete_Clicked(object sender, EventArgs e)
@@ -55,16 +52,32 @@ namespace Skintime.Views
             InventoryCosmetics add = new InventoryCosmetics();
             add.added = (Cosmetics)BindingContext;
             Cosmetics check = (Cosmetics)BindingContext;
-            if (check != null) AddButton.Text = "Khum Null";
-            else AddButton.Text = "Null";
-
+            await BlobCache.Secure.InsertObject<InventoryCosmetics>(add.added.name, add);
+            await BlobCache.Secure.InsertObject<Cosmetics>(add.added.name, check);
             KetQua tmp = new KetQua();
             tmp.key = add.added.name;
             await App.Inventorydatabase.SaveKeyAsync(tmp);
             await BlobCache.Secure.InsertObject(add.added.name, add);
 
             await Shell.Current.GoToAsync("///Inven");
-             
+            await Navigation.PopToRootAsync();
+        }
+
+        async void Delete_Clicked(object sender, EventArgs e)
+        {
+            //Add cosmetics to database
+            InventoryCosmetics add = new InventoryCosmetics();
+            add.added = (Cosmetics)BindingContext;
+            Cosmetics check = (Cosmetics)BindingContext;
+            await BlobCache.Secure.InvalidateObject<InventoryCosmetics>(add.added.name);
+            await BlobCache.Secure.InvalidateObject<Cosmetics>(add.added.name);
+            KetQua tmp = new KetQua();
+            tmp.key = add.added.name;
+            await App.Inventorydatabase.DeleteKeyAsync(tmp);
+
+            //Navigate to InventoryPage
+            await Shell.Current.GoToAsync("///Inven");
+            await Navigation.PopToRootAsync();
         }
     }
 }

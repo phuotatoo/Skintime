@@ -6,6 +6,7 @@
     <ScrollView>
         <RelativeLayout>
             <Image Source="LeafBackground.png"
+                   
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill" />
@@ -17,11 +18,11 @@
                             <Label x:Name="productbrand"
                            Text="{Binding brand}"
                            TextColor="White"
-                           FontSize="Header" />
+                           FontSize="Title" />
                 <Label x:Name="productname"
                            Text="{Binding name}"
                            TextColor="#DADED4"
-                           FontSize="Large"/>
+                           FontSize="Subtitle"/>
                 </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="White" CornerRadius="10">
