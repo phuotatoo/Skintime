@@ -53,6 +53,7 @@ namespace Skintime.Views
                 int id = Convert.ToInt32(itemId);
                 Diary note = await App.Database.GetDiaryAsync(id);
                 BindingContext = note;
+                
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);

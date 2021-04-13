@@ -6,6 +6,7 @@
     <ScrollView>
         <RelativeLayout>
             <Image Source="LeafBackground.png"
+                   
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill" />
@@ -15,30 +16,29 @@
                     <Frame BackgroundColor="Transparent" HeightRequest="100">
                         <StackLayout BackgroundColor="Transparent">
                             <Label x:Name="productbrand"
-                                   Text="{Binding brand}"
-                                   TextColor="White"
-                                   FontSize="Header" />
-                            <Label x:Name="productname"
-                                   Text="{Binding name}"
-                                   TextColor="#DADED4"
-                                   FontSize="Large"/>
-                        </StackLayout>
-                    </Frame>
-                    
-                    <Frame BackgroundColor="White" CornerRadius="10">
-                        <StackLayout>
-                            <Button x:Name="AddButton"
-                                    Text="Add to inventory"
-                                    Clicked="Add_Clicked"/>
-                            <Button x:Name="DeleteButton"
-                                    Text="Delete from inventory"
-                                    Clicked="Delete_Clicked"/>
-                            <Label x:Name="Check"
-                                   TextColor="Black"/>
-                            <ListView ItemsSource="{Binding ingredient_list}" 
-                                      SelectionMode="None"/>
-                        </StackLayout>
-                    </Frame>
+                           Text="{Binding brand}"
+                           TextColor="White"
+                           FontSize="Title" />
+                <Label x:Name="productname"
+                           Text="{Binding name}"
+                           TextColor="#DADED4"
+                           FontSize="Subtitle"/>
+                </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10">
+                    <StackLayout>
+                        <Button x:Name="AddButton"
+                    Text="Add to inventory"
+                    Clicked="Add_Clicked"/>
+                    <Button x:Name="DeleteButton"
+                    Text="Delete from inventory"
+                    Clicked="Delete_Clicked"/>
+                    <Label x:Name="Check"
+                   TextColor="Black"/>
+                        <ListView ItemsSource="{Binding ingredient_list}" 
+                                  SelectionMode="None"/>
+                    </StackLayout>
+                </Frame>
                 </StackLayout>
             </Grid>
         </RelativeLayout>

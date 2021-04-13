@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reactive.Linq;
 using Akavache;
 using Skintime.Models;
 using Xamarin.Forms;
@@ -32,8 +31,8 @@ namespace Skintime.Views
             push.brand = tmp.brand;
             push.ingredient_list = new List<String>();
             push.ingredient_list = tmp.list.Split(' ').ToList();
-            BlobCache.Secure.InsertObject(push.name, push);
-            BlobCache.Secure.Flush();
+            var check = await BlobCache.Secure.InsertObject(push.name, push);
+            //BlobCache.Secure.Flush();
             await Shell.Current.GoToAsync("..");
         }
     }
