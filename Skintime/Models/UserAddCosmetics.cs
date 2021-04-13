@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Skintime.Models
+﻿namespace Skintime.Models
 {
     public class UserAddCosmetics
     {

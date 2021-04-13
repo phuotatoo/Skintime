@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Skintime.Models
 {
@@ -20,7 +16,7 @@ namespace Skintime.Models
 
         [JsonProperty("ingredient_list")]
         public List<string> ingredient_list { get; set; }
-        
-    } 
+
+    }
 
 }

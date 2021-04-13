@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Skintime.Data;
+using System;
 using System.IO;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Skintime.Data;
-using Akavache;
-using Skintime.Views;
-using Skintime.Models;
-using System.Collections.Generic;
 
 namespace Skintime
 {
@@ -53,7 +48,7 @@ namespace Skintime
         public App()
         {
             InitializeComponent();
-            
+
             MainPage = new WelcomePage();
         }
 

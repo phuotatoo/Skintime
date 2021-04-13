@@ -1,17 +1,11 @@
-﻿
-using System;
+﻿using Akavache;
+using Skintime.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Threading.Tasks;
-using System.Reactive.Linq;
-using Skintime.Models;
-using Skintime.Views;
-using System.Globalization;
 
 namespace Skintime
 {

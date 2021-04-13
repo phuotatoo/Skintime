@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Skintime.Models;
+﻿using Skintime.Models;
 using SQLite;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Skintime.Data
@@ -32,7 +30,7 @@ namespace Skintime.Data
 
         public Task<int> SaveKeyAsync(KetQua res)
         {
-                return database.InsertAsync(res);
+            return database.InsertAsync(res);
         }
 
         public Task<int> DeleteKeyAsync(KetQua res)

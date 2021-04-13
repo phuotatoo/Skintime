@@ -1,7 +1,7 @@
 ﻿
+using Skintime.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Skintime.Views;
 
 namespace Skintime
 {

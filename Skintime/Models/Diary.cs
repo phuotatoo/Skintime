@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
+using System;
 
 namespace Skintime.Models
 {
@@ -16,8 +14,8 @@ namespace Skintime.Models
         public bool Acne { get; set; }
         public bool Eczema { get; set; }
         public string Text { get; set; }
-        
-        
+
+
 
     }
 }
