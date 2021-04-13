@@ -12,7 +12,7 @@ namespace Skintime.Views
     
     public partial class ProductDetailPage : ContentPage
     {
-        
+
         public ProductDetailPage(string check)
         {
             InitializeComponent();
@@ -56,7 +56,5 @@ namespace Skintime.Views
             //Navigate to InventoryPage
             await Shell.Current.GoToAsync("..");
         }
-
-     
     }
 }
