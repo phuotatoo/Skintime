@@ -93,7 +93,7 @@ namespace Skintime.Views
             note.Normal = !note.Normal;
             ChangeColor(sender, note.Normal);
             BindingContext = note;
-            normal.Text = picker.SelectedItem.ToString();
+            
         }
 
         void OnAcneButtonClicked(object sender, EventArgs e)
