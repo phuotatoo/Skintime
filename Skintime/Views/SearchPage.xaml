@@ -21,7 +21,8 @@
         <CollectionView
                 x:Name="Coll"
                 SelectionMode="Single"
-                SelectionChanged="OnSelectionChanged">
+                SelectionChanged="OnSelectionChanged"
+                >
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>

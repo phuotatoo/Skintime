@@ -15,8 +15,28 @@
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
                     Clicked="OnSearchClicked" />
-            <Button Text ="Click to Add Product"
-                Clicked="AddProduct_Clicked"/>
+            <FlexLayout Direction="Column"
+                JustifyContent="SpaceEvenly"
+                AlignItems="Center">
+
+                <FlexLayout.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="ImageSource">
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="iOS, Android" Value="PlusSmall.png" />
+                                <On Platform="UWP" Value="Assets/PlusSmall.png" />
+                            </OnPlatform>
+                        </Setter>
+                    </Style>
+                </FlexLayout.Resources>
+
+                <Button Text ="Add your Product"
+                        WidthRequest = "370"
+                        HeightRequest = "50"
+                        CornerRadius="10"
+                        HorizontalOptions="Center"
+                        Clicked="OnSearchClicked"  />
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
