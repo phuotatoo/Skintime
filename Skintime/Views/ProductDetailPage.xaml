@@ -35,8 +35,7 @@
                     Clicked="Delete_Clicked"/>
                     <Label x:Name="Check"
                    TextColor="Black"/>
-                        <ListView ItemsSource="{Binding ingredient_list}" 
-                                  SelectionMode="None"/>
+                        <ListView ItemsSource="{Binding ingredient_list}" />
                     </StackLayout>
                 </Frame>
                 </StackLayout>

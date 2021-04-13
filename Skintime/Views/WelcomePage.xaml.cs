@@ -72,7 +72,7 @@ namespace Skintime
                     a.name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(a.name.ToLower());
                     tmpkey.brand = a.brand;
                     tmpkey.name = a.name;
-                    await App.Keydatabase.SaveKeyAsync(tmpkey);
+                    App.Keydatabase.SaveKeyAsync(tmpkey);
                     await BlobCache.Secure.InsertObject(a.name, a);
                 }
             }
