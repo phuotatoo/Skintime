@@ -29,6 +29,7 @@
         <Picker x:Name="picker" 
                 
                 
+                ItemDisplayBinding="{Binding Product}"
             />
 
         <StackLayout Orientation="Horizontal">
