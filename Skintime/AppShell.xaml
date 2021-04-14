@@ -25,7 +25,8 @@
     <TabBar>
         <ShellContent Title="Home"
                       Icon="home.png"
-                      ContentTemplate="{DataTemplate views:HomePage}" />
+                      ContentTemplate="{DataTemplate views:HomePage}"
+                      Route="homepage" />
         <ShellContent Title="Diary"
                       Icon="calendar.png"
                       ContentTemplate="{DataTemplate views:DiaryPage}" />
