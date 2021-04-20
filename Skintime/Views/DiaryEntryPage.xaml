@@ -32,18 +32,12 @@
         <StackLayout Orientation="Horizontal">
             <Button x:Name="normal"
                         Text="Normal"
-                        BackgroundColor="{Binding nColor}"
-                        TextColor="{Binding nText}"
                         Clicked="OnNormalButtonClicked"/>
             <Button x:Name="acne"
                         Text="Acne"
-                        BackgroundColor="{Binding aColor}"
-                        TextColor="{Binding aText}"
                         Clicked="OnAcneButtonClicked"/>
             <Button x:Name="eczema"
                         Text="Eczema"
-                        BackgroundColor="{Binding eColor}"
-                        TextColor="{Binding eText}"
                         Clicked="OnEczemaButtonClicked"/>
         </StackLayout>
         

@@ -38,14 +38,16 @@
                 <!-- Define the appearance of each item in the list -->
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding brand}"
-                           TextColor="Black"
-                           FontSize="Small" />
-                            <Label Text="{Binding name}"
-                           TextColor="Black"
-                           FontSize="Medium" />
-                        </StackLayout>
+                        <Frame BackgroundColor="White" BorderColor="LightGray">
+                            <StackLayout>
+                                <Label Text="{Binding brand}"
+                                   TextColor="#3C403D"
+                                   FontSize="Small" />
+                                <Label Text="{Binding name}"
+                                   TextColor="#39603D"
+                                   FontSize="Medium" />
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

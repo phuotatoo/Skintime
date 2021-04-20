@@ -60,8 +60,18 @@ namespace Skintime.Views
                 ChangeColor(normal, note.Normal);
                 ChangeColor(acne, note.Acne);
                 ChangeColor(eczema, note.Eczema);
-                picker.SelectedItem = note.Product;
+                //picker.SelectedItem = note.Product;
                 //normal.Text = note.Product;
+                if (picker.Items.Count == 0)
+                {
+                    var list = await BlobCache.Secure.GetAllObjects<InventoryCosmetics>();
+                    chooselist = list.ToList();
+                    foreach (InventoryCosmetics a in chooselist)
+                    {
+                        picker.Items.Add(a.added.name);
+                    }
+                }
+                picker.SelectedItem = note.Product;
             }
             catch (Exception)
             {
@@ -113,7 +123,7 @@ namespace Skintime.Views
             DateTime temp = date.Date + time.Time;
             note.datetime = temp;
             note.Product = picker.SelectedItem.ToString();
-            if (!string.IsNullOrWhiteSpace(note.Text) && picker.SelectedItem!=null)
+            if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveDiaryAsync(note);
             }

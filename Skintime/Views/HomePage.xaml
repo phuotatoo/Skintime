@@ -35,7 +35,7 @@
                         HeightRequest = "50"
                         CornerRadius="10"
                         HorizontalOptions="Center"
-                        Clicked="OnSearchClicked"  />
+                        Clicked="AddProduct_Clicked"  />
             </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
